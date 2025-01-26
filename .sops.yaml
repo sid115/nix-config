@@ -1,0 +1,13 @@
+keys:
+  - &host_sid age19ce3ww289nka86h5xyah33cpquz5r2yrqp99urtd7l34003urdrs5dutcc
+  - &user_sid age19yeqvv28fgrtk6jsh3xyaf0lch86kna6rcz4dwe962yyyyevu30sx474xy
+creation_rules:
+  - path_regex: hosts/sid/secrets.yaml$
+    key_groups:
+    - age:
+      - *user_sid
+      - *host_sid
+  - path_regex: users/sid/home/secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *user_sid
