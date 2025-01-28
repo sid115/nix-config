@@ -18,5 +18,11 @@
       port = 28677;
       user = "admin";
     };
+    x = {
+      host = "x";
+      hostname = "192.168.188.22";
+      port = 2299;
+      user = "sid";
+    };
   };
 }
