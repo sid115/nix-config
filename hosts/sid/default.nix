@@ -2,6 +2,7 @@
   inputs,
   outputs,
   config,
+  pkgs,
   ...
 }:
 
@@ -11,6 +12,7 @@
     ./hardware.nix
     ./packages.nix
 
+    inputs.core.nixosModules.baibot
     inputs.core.nixosModules.common
     inputs.core.nixosModules.firefly-iii
     inputs.core.nixosModules.gitea
@@ -60,6 +62,10 @@
           admin = "@sid:sid.ovh";
         };
       };
+    };
+    baibot = {
+      enable = true;
+      package = inputs.core.packages.${pkgs.system}.baibot;
     };
     nginx.enable = true;
     searx.enable = true;
