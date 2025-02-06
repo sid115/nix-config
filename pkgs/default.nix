@@ -4,5 +4,6 @@
 }:
 
 {
+  chatbox = pkgs.callPackage ./chatbox { };
   udiskie-dmenu = pkgs.callPackage ./udiskie-dmenu { };
 }

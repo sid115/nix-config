@@ -17,9 +17,12 @@
       texliveFull
       wineWowPackages.waylandFull
       zoom-us
+
+      local.chatbox
     ]
     # tools
     ++ [
+      aichat
       duden
       gptfdisk
       localsend
@@ -32,7 +35,7 @@
       subfinder
       yt-dlp
 
-      inputs.core.packages.${pkgs.system}.gitingest
+      core.gitingest
     ]
     # reverse engineering
     ++ [
