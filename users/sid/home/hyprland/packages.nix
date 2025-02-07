@@ -7,7 +7,6 @@
       drawio
       gimp
       inkscape
-      jan
       jellyfin-media-player
       mermaid-cli
       octaveFull
@@ -17,8 +16,6 @@
       texliveFull
       wineWowPackages.waylandFull
       zoom-us
-
-      local.chatbox
     ]
     # tools
     ++ [
@@ -36,6 +33,7 @@
       yt-dlp
 
       core.gitingest
+      local.pdf2printable
     ]
     # reverse engineering
     ++ [
