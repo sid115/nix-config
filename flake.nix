@@ -7,7 +7,7 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    core.url = "github:sid115/nix-core/feature/baibot";
+    core.url = "github:sid115/nix-core/develop";
     # core.url = "git+file:///home/sid/src/nix-core"; # https://github.com/NixOS/nix/pull/12220
     core.inputs.nixpkgs.follows = "nixpkgs";
 

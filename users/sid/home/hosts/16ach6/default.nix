@@ -8,4 +8,6 @@
   '';
 
   programs.waybar.settings.mainBar.output = "eDP-1";
+
+  services.spotifyd.settings.device_name = "16ach6";
 }

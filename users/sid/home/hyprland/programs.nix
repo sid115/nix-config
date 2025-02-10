@@ -38,6 +38,21 @@
     };
   };
 
+  programs.spotify-player = {
+    enable = true;
+    actions = [
+      {
+        action = "GoToArtist";
+        key_sequence = "g A";
+      }
+      {
+        action = "GoToAlbum";
+        key_sequence = "g B";
+        target = "PlayingTrack";
+      }
+    ];
+  };
+
   # VSC
   programs = {
     vscode = {

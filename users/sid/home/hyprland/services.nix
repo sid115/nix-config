@@ -26,4 +26,13 @@
       }
     ];
   };
+
+  services.spotifyd = {
+    enable = true;
+    settings = {
+      username = "zephyrius17";
+      password_cmd = "cat ${config.sops.secrets.spotify.path}";
+    };
+  };
+  sops.secrets.spotify = { };
 }

@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages =
@@ -12,7 +12,6 @@
       octaveFull
       pdfarranger
       remmina
-      spotify # try programs.spotify-player
       texliveFull
       wineWowPackages.waylandFull
       zoom-us
