@@ -4,6 +4,7 @@
   imports = [
     ./fzf-open.nix
     ./gpg.nix
+    ./music.nix
     ./packages.nix
     ./programs.nix
     ./rclone.nix
@@ -21,7 +22,6 @@
     settings = {
       bind = [
         "$mod,       g, exec, gimp"
-        "$mod,       s, exec, kitty -T spotify -e spotify_player"
         "$mod,       v, exec, virt-manager"
         "$mod,       z, exec, zoom-us"
         "$mod CTRL,  o, exec, obs"
@@ -31,7 +31,7 @@
         "workspace 4, title:^newsboat$"
         "workspace 6, class:^thunderbird$, title:Thunderbird$"
         "workspace 7, title:^Jellyfin Media Player$"
-        "workspace 7, title:^spotify$"
+        "workspace 7, title:^ncmpcpp$"
         "workspace 8, class:^Element$, title:^Element"
         "workspace 9, class:^chrome-ai.portuus.de"
         "workspace 10, class:^zoom$, title:^Zoom"

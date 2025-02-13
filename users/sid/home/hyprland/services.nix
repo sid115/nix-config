@@ -1,4 +1,8 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  ...
+}:
 
 {
   imports = [ inputs.core.homeModules.nextcloud-sync ];
@@ -26,13 +30,4 @@
       }
     ];
   };
-
-  services.spotifyd = {
-    enable = true;
-    settings = {
-      username = "zephyrius17";
-      password_cmd = "cat ${config.sops.secrets.spotify.path}";
-    };
-  };
-  sops.secrets.spotify = { };
 }
