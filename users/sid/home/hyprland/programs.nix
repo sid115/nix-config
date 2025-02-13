@@ -40,17 +40,34 @@
 
   programs.spotify-player = {
     enable = true;
-    actions = [
-      {
-        action = "GoToArtist";
-        key_sequence = "g A";
-      }
-      {
-        action = "GoToAlbum";
-        key_sequence = "g B";
-        target = "PlayingTrack";
-      }
-    ];
+    # package = pkgs.spotify-player.override {
+    #   withImage = false;
+    #   withSixel = false;
+    # };
+    settings = {
+      actions = [
+        {
+          command = "GoToArtist";
+          key_sequence = "g A";
+        }
+        {
+          command = "GoToAlbum";
+          key_sequence = "g B";
+          target = "PlayingTrack";
+        }
+      ];
+      pause_icon = " ";
+      play_icon = " ";
+      device = {
+        audio_cache = true;
+        autoplay = true;
+        normalization = true;
+        volume = 100;
+      };
+      layout = {
+        playback_window_position = "Bottom";
+      };
+    };
   };
 
   # VSC
