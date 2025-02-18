@@ -12,6 +12,7 @@
       octaveFull
       pdfarranger
       remmina
+      spotify
       texliveFull
       wineWowPackages.waylandFull
       zoom-us
@@ -31,7 +32,8 @@
       subfinder
       yt-dlp
 
-      core.gitingest
+      # core.gitingest # https://github.com/sid115/nix-core/issues/6
+      core.marker-pdf
       local.pdf2printable
     ]
     # reverse engineering

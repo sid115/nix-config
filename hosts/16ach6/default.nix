@@ -5,7 +5,7 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    # ./vfio.nix # FIXME
+    ./vfio.nix # FIXME
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.laptop
@@ -35,7 +35,6 @@
         "video"
         "wheel"
         "networkmanager"
-        "libvirtd"
       ];
       sshKeyFiles = [ ../../users/sid/pubkeys/gpg.pub ];
     };

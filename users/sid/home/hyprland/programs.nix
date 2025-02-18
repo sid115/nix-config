@@ -5,6 +5,8 @@
 }:
 
 {
+  programs.librewolf.policies.Homepage.StartPage = "previous-session";
+
   programs.newsboat = {
     extraConfig = ''
       urls-source "ttrss"
@@ -66,6 +68,10 @@
       };
       layout = {
         playback_window_position = "Bottom";
+        library = {
+          playlist_percent = 80;
+          album_percent = 0;
+        };
       };
     };
   };
