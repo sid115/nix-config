@@ -68,17 +68,17 @@
           };
           modules = [ ./hosts/16ach6 ];
         };
+        nuc = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./hosts/nuc ];
+        };
         sid = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
           };
           modules = [ ./hosts/sid ];
-        };
-        vde = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./hosts/vde ];
         };
       };
 
@@ -93,6 +93,16 @@
             ./users/sid/home/hosts/16ach6
           ];
         };
+        "sid@nuc" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./users/sid/home
+            ./users/sid/home/hosts/nuc
+          ];
+        };
         "sid@sid" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
@@ -100,16 +110,6 @@
           };
           modules = [
             ./users/sid/home
-          ];
-        };
-        "sid@vde" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            ./users/sid/home
-            ./users/sid/home/hosts/vde
           ];
         };
       };

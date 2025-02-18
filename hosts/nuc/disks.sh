@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SSD='/dev/disk/by-id/ata-CT500MX500SSD1_2002E280A38C'
+SSD='/dev/disk/by-id/nvme-Micron_MTFDHBA512TDV_21212F5AAB85'
 MNT='/mnt'
 SWAP_GB=16
 
