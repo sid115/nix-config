@@ -74,6 +74,12 @@
           };
           modules = [ ./hosts/sid ];
         };
+        vde = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./hosts/vde ];
+        };
       };
 
       homeConfigurations = {
@@ -94,6 +100,16 @@
           };
           modules = [
             ./users/sid/home
+          ];
+        };
+        "sid@vde" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./users/sid/home
+            ./users/sid/home/hosts/vde
           ];
         };
       };
