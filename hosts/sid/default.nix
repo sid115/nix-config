@@ -66,6 +66,12 @@
     baibot = {
       enable = true;
       package = inputs.core.packages.${pkgs.system}.baibot;
+      environmentFile = "/etc/baibot/baibot.env";
+      config = {
+        user.mxid_localpart = "baibot3";
+        access.admin_patterns = [ "@sid:sid.ovh" ];
+        initial_global_config.user_patterns = [ "@*:sid.ovh" ];
+      };
     };
     nginx.enable = true;
     searx.enable = true;
