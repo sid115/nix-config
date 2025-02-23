@@ -1,5 +1,17 @@
 {
   programs.ssh.matchBlocks = {
+    arch = {
+      host = "a arch";
+      hostname = "192.168.122.120";
+      port = 22;
+      user = "sid";
+    };
+    debian = {
+      host = "d debian";
+      hostname = "192.168.122.208";
+      port = 22;
+      user = "sid";
+    };
     portuus = {
       host = "p portuus *.portuus.de";
       hostname = "portuus.de";
@@ -18,10 +30,10 @@
       port = 28677;
       user = "admin";
     };
-    x = {
-      host = "x";
+    vde = {
+      host = "v vde";
       hostname = "192.168.188.22";
-      port = 2299;
+      port = 22;
       user = "sid";
     };
   };

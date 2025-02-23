@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -13,6 +17,7 @@
 
     inputs.core.homeModules.hyprland
     inputs.core.homeModules.styling
+    inputs.core.homeModules.virtualization
   ];
 
   wayland.windowManager.hyprland = {

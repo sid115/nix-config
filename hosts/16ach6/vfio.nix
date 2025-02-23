@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [ inputs.core.nixosModules.virtualisation ];
+  imports = [ inputs.core.nixosModules.virtualization ];
 
   # boot.kernelParams = [
   #   "amd_iommu=on"

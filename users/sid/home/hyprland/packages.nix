@@ -32,7 +32,7 @@
       subfinder
       yt-dlp
 
-      # core.gitingest # https://github.com/sid115/nix-core/issues/6
+      core.gitingest
       core.marker-pdf
       local.pdf2printable
     ]
