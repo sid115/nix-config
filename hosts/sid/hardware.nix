@@ -1,7 +1,15 @@
-{ lib, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
-  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
 
   boot.initrd.availableKernelModules = [
     "ahci"
@@ -21,11 +29,13 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/EFI";
-    fsType = "vfat";
+    device = "/dev/disk/by-label/BOOT";
+    fsType = "ext4";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-label/SWAP"; } ];
+  swapDevices = [
+    { device = "/dev/disk/by-label/SWAP"; }
+  ];
 
   networking.useDHCP = lib.mkDefault true;
 
