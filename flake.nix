@@ -103,15 +103,6 @@
             ./users/sid/home/hosts/nuc
           ];
         };
-        "sid@sid" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            ./users/sid/home
-          ];
-        };
       };
     };
 }
