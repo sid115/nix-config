@@ -4,6 +4,7 @@
   home.packages =
     with pkgs;
     [
+      audacity
       drawio
       gimp
       inkscape
@@ -35,6 +36,7 @@
       core.gitingest
       core.marker-pdf
       local.pdf2printable
+      local.yt2rss
     ]
     # reverse engineering
     ++ [
