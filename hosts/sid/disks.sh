@@ -14,41 +14,58 @@ wait_for_device() {
   echo "Device $device is ready."
 }
 
-if ! command -v sgdisk &> /dev/null; then
-  nix-env -iA nixos.gptfdisk
-fi
-
 swapoff --all
 udevadm settle
-
 wait_for_device $SSD
 
 echo "Wiping filesystem on $SSD..."
 wipefs -a $SSD
 
-echo "Clearing partition table on $SSD..."
-sgdisk --zap-all $SSD
+echo "Creating new MBR partition table on $SSD..."
+fdisk $SSD << EOF
+o
+w
+EOF
 
 echo "Partitioning $SSD..."
-sgdisk -n1:1M:+1G         -t1:EF00 -c1:EFI $SSD
-sgdisk -n2:0:+"$SWAP_GB"G -t2:8200 -c2:SWAP $SSD
-sgdisk -n3:0:0            -t3:8304 -c3:ROOT $SSD
+fdisk $SSD << EOF
+n
+p
+1
+
++512M
+a
+n
+p
+2
+
++${SWAP_GB}G
+t
+2
+82
+n
+p
+3
+
+
+w
+EOF
+
 partprobe -s $SSD
 udevadm settle
-
 wait_for_device "${SSD}1"
 wait_for_device "${SSD}2"
 wait_for_device "${SSD}3"
 
 echo "Formatting partitions..."
-mkfs.vfat -F 32 -n EFI "${SSD}1"
+mkfs.ext4 -L BOOT "${SSD}1"
 mkswap -L SWAP "${SSD}2"
 mkfs.ext4 -L ROOT "${SSD}3"
 
 echo "Mounting partitions..."
 mount -o X-mount.mkdir "${SSD}3" "$MNT"
 mkdir -p "$MNT/boot"
-mount -t vfat -o fmask=0077,dmask=0077,iocharset=iso8859-1 "${SSD}1" "$MNT/boot"
+mount "${SSD}1" "$MNT/boot"
 
 echo "Enabling swap..."
 swapon "${SSD}2"
