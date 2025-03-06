@@ -23,18 +23,13 @@ udevadm settle
 
 wait_for_device $SSD
 
-echo "Wiping filesystem on $SSD..."
-wipefs -a $SSD
-
-echo "Clearing partition table on $SSD..."
-sgdisk --zap-all $SSD
-
 echo "Partitioning $SSD..."
 sgdisk -n5:0:+"$SWAP_GB"G -t5:8200 -c5:SWAP $SSD
 sgdisk -n6:0:0            -t6:8304 -c6:ROOT $SSD
 partprobe -s $SSD
 udevadm settle
 
+wait_for_device ${SSD}-part1 # Windows ESP
 wait_for_device ${SSD}-part5
 wait_for_device ${SSD}-part6
 
@@ -44,6 +39,8 @@ mkfs.ext4 -L ROOT "${SSD}-part6"
 
 echo "Mounting partitions..."
 mount -o X-mount.mkdir "${SSD}-part6" "$MNT"
+mkdir -p "$MNT/boot"
+mount "${SSD}-part1" "$MNT/boot"
 
 echo "Enabling swap..."
 swapon "${SSD}-part5"
