@@ -30,28 +30,23 @@ echo "Clearing partition table on $SSD..."
 sgdisk --zap-all $SSD
 
 echo "Partitioning $SSD..."
-sgdisk -n1:1M:+1G         -t1:EF00 -c1:EFI $SSD
-sgdisk -n2:0:+"$SWAP_GB"G -t2:8200 -c2:SWAP $SSD
-sgdisk -n3:0:0            -t3:8304 -c3:ROOT $SSD
+sgdisk -n5:0:+"$SWAP_GB"G -t5:8200 -c5:SWAP $SSD
+sgdisk -n6:0:0            -t6:8304 -c6:ROOT $SSD
 partprobe -s $SSD
 udevadm settle
 
-wait_for_device ${SSD}-part1
-wait_for_device ${SSD}-part2
-wait_for_device ${SSD}-part3
+wait_for_device ${SSD}-part5
+wait_for_device ${SSD}-part6
 
 echo "Formatting partitions..."
-mkfs.vfat -F 32 -n EFI "${SSD}-part1"
-mkswap -L SWAP "${SSD}-part2"
-mkfs.ext4 -L ROOT "${SSD}-part3"
+mkswap -L SWAP "${SSD}-part5"
+mkfs.ext4 -L ROOT "${SSD}-part6"
 
 echo "Mounting partitions..."
-mount -o X-mount.mkdir "${SSD}-part3" "$MNT"
-mkdir -p "$MNT/boot"
-mount -t vfat -o fmask=0077,dmask=0077,iocharset=iso8859-1 "${SSD}-part1" "$MNT/boot"
+mount -o X-mount.mkdir "${SSD}-part6" "$MNT"
 
 echo "Enabling swap..."
-swapon "${SSD}-part2"
+swapon "${SSD}-part5"
 
 echo "Partitioning and setup complete:"
 lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL

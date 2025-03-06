@@ -7,7 +7,7 @@
     ./packages.nix
 
     inputs.core.nixosModules.common
-    inputs.core.nixosModules.device.laptop # for bt
+    inputs.core.nixosModules.device.laptop # for Bluetooth
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
@@ -38,6 +38,8 @@
       sshKeyFiles = [ ../../users/sid/pubkeys/gpg.pub ];
     };
   };
+
+  time.hardwareClockInLocalTime = true; # Windows compatibility
 
   system.stateVersion = "24.11";
 }
