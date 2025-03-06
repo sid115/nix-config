@@ -10,5 +10,5 @@
     AQ_NO_MODIFIERS = 1;
   };
 
-  services.spotifyd.settings.device_name = "nuc";
+  services.spotifyd.settings.device_name = "nuc8";
 }

@@ -16,7 +16,7 @@
     outputs.nixosModules.common
   ];
 
-  networking.hostName = "nuc";
+  networking.hostName = "nuc8";
 
   services = {
     openssh.enable = true;

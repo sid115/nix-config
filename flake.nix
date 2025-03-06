@@ -68,7 +68,7 @@
           };
           modules = [ ./hosts/16ach6 ];
         };
-        nuc = nixpkgs.lib.nixosSystem {
+        nuc8 = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
           };
@@ -93,14 +93,14 @@
             ./users/sid/home/hosts/16ach6
           ];
         };
-        "sid@nuc" = home-manager.lib.homeManagerConfiguration {
+        "sid@nuc8" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs;
           };
           modules = [
             ./users/sid/home
-            ./users/sid/home/hosts/nuc
+            ./users/sid/home/hosts/nuc8
           ];
         };
       };
