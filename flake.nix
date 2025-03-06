@@ -72,7 +72,7 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./hosts/nuc ];
+          modules = [ ./hosts/nuc8 ];
         };
         sid = nixpkgs.lib.nixosSystem {
           specialArgs = {
