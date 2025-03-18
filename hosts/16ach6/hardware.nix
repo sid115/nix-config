@@ -47,20 +47,20 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # Trying to fix: DRM kernel driver 'nvidia-drm' in use. NVK requires nouveau.
-  hardware.nvidia.modesetting.enable = true;
-  hardware.graphics.enable = true; # for nouveau drivers
-  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
-  environment.variables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    NVD_BACKEND = "direct";
-    VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  };
-  environment.systemPackages = [
-    pkgs.libva
-    pkgs.libva-utils
-    pkgs.libvdpau
-    pkgs.libvdpau-va-gl
-    pkgs.vaapiVdpau
-  ];
+  # hardware.nvidia.modesetting.enable = true;
+  # hardware.graphics.enable = true; # for nouveau drivers
+  # boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
+  # environment.variables = {
+  #   LIBVA_DRIVER_NAME = "nvidia";
+  #   NVD_BACKEND = "direct";
+  #   VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+  #   __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  # };
+  # environment.systemPackages = [
+  #   pkgs.libva
+  #   pkgs.libva-utils
+  #   pkgs.libvdpau
+  #   pkgs.libvdpau-va-gl
+  #   pkgs.vaapiVdpau
+  # ];
 }

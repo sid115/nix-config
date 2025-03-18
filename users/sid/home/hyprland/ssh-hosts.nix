@@ -12,6 +12,12 @@
       port = 22;
       user = "sid";
     };
+    jfk = {
+      host = "j jfk";
+      hostname = "cgn.ovh";
+      port = 2299;
+      user = "jfk";
+    };
     portuus = {
       host = "p portuus *.portuus.de";
       hostname = "portuus.de";
