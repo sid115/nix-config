@@ -1,17 +1,5 @@
 {
   programs.ssh.matchBlocks = {
-    arch = {
-      host = "a arch";
-      hostname = "192.168.122.120";
-      port = 22;
-      user = "sid";
-    };
-    debian = {
-      host = "d debian";
-      hostname = "192.168.122.208";
-      port = 22;
-      user = "sid";
-    };
     jfk = {
       host = "j jfk";
       hostname = "cgn.ovh";

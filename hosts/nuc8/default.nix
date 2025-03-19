@@ -12,6 +12,7 @@
     inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.pipewire
+    inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
   ];
@@ -27,13 +28,14 @@
     sid = {
       name = "sid";
       extraGroups = [
-        "input"
         "audio"
         "floppy"
+        "input"
+        "libvirtd"
         "lp"
+        "networkmanager"
         "video"
         "wheel"
-        "networkmanager"
       ];
       sshKeyFiles = [ ../../users/sid/pubkeys/gpg.pub ];
     };

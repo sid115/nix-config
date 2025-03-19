@@ -12,5 +12,14 @@
 
   programs.waybar.settings.mainBar.output = "DP-2";
 
+  programs.ssh.matchBlocks = {
+    arch = {
+      host = "a arch";
+      hostname = "192.168.122.210";
+      port = 22;
+      user = "sid";
+    };
+  };
+
   services.spotifyd.settings.device_name = "nuc8";
 }
