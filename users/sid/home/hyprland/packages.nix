@@ -35,6 +35,7 @@
 
       core.gitingest
       core.marker-pdf
+      local.otp
       local.pdf2printable
       local.yt2rss
     ]
