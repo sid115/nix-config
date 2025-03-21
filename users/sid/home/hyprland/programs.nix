@@ -1,11 +1,18 @@
 {
+  inputs,
   config,
   pkgs,
   ...
 }:
 
 {
-  programs.librewolf.policies.Homepage.StartPage = "previous-session";
+  programs.librewolf = {
+    policies.Homepage.StartPage = "previous-session";
+    profiles.default.extensions =
+      with inputs.nur.legacyPackages."${pkgs.system}".repos.rycee.firefox-addons; [
+        zotero-connector
+      ];
+  };
 
   programs.newsboat = {
     extraConfig = ''

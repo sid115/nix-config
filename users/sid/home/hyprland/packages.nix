@@ -17,6 +17,7 @@
       texliveFull
       wineWowPackages.waylandFull
       zoom-us
+      zotero
     ]
     # tools
     ++ [
@@ -29,6 +30,7 @@
       ocrmypdf
       p7zip
       rclone
+      rustfmt
       speedtest-cli
       subfinder
       yt-dlp
