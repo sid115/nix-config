@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+from openai import OpenAI
+
+def transcribe_audio(file_path):
+    """Transcribe the given audio file using OpenAI API."""
+    if not os.environ.get("OPENAI_API_KEY"):
+        print("Error: OPENAI_API_KEY environment variable is not set.")
+        return None
+    
+    if not os.path.exists(file_path):
+        print(f"Error: File '{file_path}' not found.")
+        return None
+    
+    try:
+        client = OpenAI()
+        
+        with open(file_path, "rb") as audio_file:
+            transcription = client.audio.transcriptions.create(
+                # model="gpt-4o-transcribe",
+                model="whisper-1",
+                file=audio_file,
+                response_format="text"
+            )
+            
+        return transcription
+    
+    except Exception as e:
+        print(f"Error occurred during transcription: {e}")
+        return None
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: transcribe <audio_file_path>")
+        sys.exit(1)
+    
+    audio_file_path = sys.argv[1]
+    
+    transcription = transcribe_audio(audio_file_path)
+    
+    if transcription:
+        print(transcription)
+
+if __name__ == "__main__":
+    main()
