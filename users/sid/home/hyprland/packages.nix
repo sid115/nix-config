@@ -22,6 +22,7 @@
     # tools
     ++ [
       aichat
+      compose2nix
       duden
       gptfdisk
       localsend
@@ -39,6 +40,7 @@
       core.marker-pdf
       local.otp
       local.pdf2printable
+      local.transcribe
       local.yt2rss
     ]
     # reverse engineering

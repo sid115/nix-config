@@ -6,6 +6,11 @@
 }:
 
 {
+  programs.gh = {
+    enable = true;
+    # TODO: set GH_TOKEN with sops
+  };
+
   programs.librewolf = {
     policies.Homepage.StartPage = "previous-session";
     profiles.default.extensions =
