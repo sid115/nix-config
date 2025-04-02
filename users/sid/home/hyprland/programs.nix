@@ -52,6 +52,23 @@
     };
   };
 
+  # setup: sudo mkdir -p /mnt/sshfs && sudo chown sid:sid /mnt/sshfs
+  programs.sftpman = {
+    enable = true;
+    # gpg --export-ssh-key <auth key id> > ~/.ssh/id_rsa.pub
+    defaultSshKey = "/home/sid/.ssh/id_rsa.pub";
+    mounts = {
+      portuus = {
+        host = "portuus.de";
+        user = "sid";
+        port = 2299;
+        mountPoint = "/home/sid/.config/nixos";
+      };
+    };
+  };
+  home.shellAliases.sm = "sftpman";
+  home.packages = [ pkgs.sshfs ];
+
   programs.spotify-player = {
     enable = true;
     # package = pkgs.spotify-player.override {

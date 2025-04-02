@@ -14,6 +14,7 @@
     inputs.core.nixosModules.matrix-synapse
     inputs.core.nixosModules.nginx
     inputs.core.nixosModules.normalUsers
+    inputs.core.nixosModules.ntfy-sh
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.sops
 
@@ -39,6 +40,18 @@
       };
     };
     nginx.enable = true;
+    ntfy-sh = {
+      enable = true;
+      settings.base-url = "https://ntfy.sid.ovh";
+      notifiers = {
+        monitor-domains = [
+          {
+            fqdn = "cloud.portuus.de";
+            topic = "portuus";
+          }
+        ];
+      };
+    };
   };
 
   normalUsers = {
