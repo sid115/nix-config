@@ -42,6 +42,7 @@
     nginx.enable = true;
     ntfy-sh = {
       enable = true;
+      reverseProxy.enable = true;
       settings.base-url = "https://ntfy.sid.ovh";
       notifiers = {
         monitor-domains = [
