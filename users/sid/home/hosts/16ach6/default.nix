@@ -16,11 +16,20 @@
       port = 22;
       user = "sid";
     };
-    debian = {
-      host = "d debian";
-      hostname = "192.168.122.208";
-      port = 22;
+    vde = {
+      host = "v vde";
+      hostname = "192.168.188.22";
+      port = 2299;
       user = "sid";
+    };
+  };
+
+  programs.sftpman.mounts = {
+    vde = {
+      host = "192.168.188.22";
+      user = "sid";
+      port = 2299;
+      mountPoint = "/home/sid/.config/nixos";
     };
   };
 

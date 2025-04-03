@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   programs.ssh.matchBlocks = {
     jfk = {
@@ -24,11 +26,28 @@
       port = 28677;
       user = "admin";
     };
-    vde = {
-      host = "v vde";
-      hostname = "192.168.188.22";
-      port = 22;
-      user = "sid";
+  };
+
+  # setup: sudo mkdir -p /mnt/sshfs && sudo chown sid:sid /mnt/sshfs
+  programs.sftpman = {
+    enable = true;
+    # gpg --export-ssh-key <auth key id> > ~/.ssh/id_rsa.pub
+    defaultSshKey = "/home/sid/.ssh/id_rsa.pub";
+    mounts = {
+      portuus = {
+        host = "portuus.de";
+        user = "sid";
+        port = 2299;
+        mountPoint = "/home/sid/.config/nixos";
+      };
+      sid = {
+        host = "sid.ovh";
+        user = "sid";
+        port = 2299;
+        mountPoint = "/home/sid/.config/nixos";
+      };
     };
   };
+  home.shellAliases.sm = "sftpman";
+  home.packages = [ pkgs.sshfs ];
 }

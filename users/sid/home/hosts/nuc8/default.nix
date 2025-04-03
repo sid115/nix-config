@@ -19,6 +19,21 @@
       port = 22;
       user = "sid";
     };
+    vde = {
+      host = "v vde";
+      hostname = "192.168.188.22";
+      port = 2299;
+      user = "sid";
+    };
+  };
+
+  programs.sftpman.mounts = {
+    vde = {
+      host = "192.168.188.22";
+      user = "sid";
+      port = 2299;
+      mountPoint = "/home/sid/.config/nixos";
+    };
   };
 
   services.spotifyd.settings.device_name = "nuc8";
