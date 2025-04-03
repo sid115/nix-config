@@ -7,12 +7,15 @@
 {
   imports = [
     ./boot.nix
+    ./gnome.nix
     ./hardware.nix
     ./packages.nix
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
+    inputs.core.nixosModules.pipewire
+    inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
   ];
@@ -22,6 +25,7 @@
 
   services = {
     openssh.enable = true;
+    pipewire.enable = true;
   };
 
   normalUsers = {
