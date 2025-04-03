@@ -80,6 +80,12 @@
           };
           modules = [ ./hosts/sid ];
         };
+        vde = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./hosts/vde ];
+        };
       };
 
       homeConfigurations = {
