@@ -25,6 +25,7 @@
       compose2nix
       duden
       gptfdisk
+      instaloader
       localsend
       magic-wormhole
       naabu
