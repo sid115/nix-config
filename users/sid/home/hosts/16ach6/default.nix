@@ -12,7 +12,7 @@
   programs.ssh.matchBlocks = {
     arch = {
       host = "a arch";
-      hostname = "192.168.122.120";
+      hostname = "192.168.122.130";
       port = 22;
       user = "sid";
     };
@@ -25,6 +25,12 @@
   };
 
   programs.sftpman.mounts = {
+    arch = {
+      host = "192.168.122.130";
+      user = "sid";
+      port = 22;
+      mountPoint = "/home/sid";
+    };
     vde = {
       host = "192.168.188.22";
       user = "sid";
