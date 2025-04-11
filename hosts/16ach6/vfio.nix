@@ -64,5 +64,5 @@ in
 
   environment.systemPackages = [ pkgs.looking-glass-client ];
 
-  normalUsers.sid.extraGroups = [ "libvirtd" ];
+  normalUsers.sid.extraGroups = [ "libvirtd" "qemu-libvirtd" ];
 }
