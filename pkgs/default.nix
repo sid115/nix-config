@@ -5,7 +5,6 @@
 
 {
   chatbox = pkgs.callPackage ./chatbox { };
-  comfy-ui = pkgs.callPackage ./comfy-ui { };
   otp = pkgs.callPackage ./otp { };
   pdf2printable = pkgs.callPackage ./pdf2printable { };
   spotify-to-tidal = pkgs.callPackage ./spotify-to-tidal { };
