@@ -94,11 +94,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1743972879,
-        "narHash": "sha256-kpOv99dDiG8E/U36HILfXmSbJtvdf9Mk2i2b6ga406s=",
+        "lastModified": 1744568640,
+        "narHash": "sha256-dupLo0ZF8uF+EQ+29RtH9t4UpjkwksLgo1DcKJgtXAs=",
         "owner": "sid115",
         "repo": "nix-core",
-        "rev": "2104e1ca4c2be27da69e122d6301c9d4fa282f27",
+        "rev": "63aa746e22f4bee40bdf64f7ff4c001ccf64e37e",
         "type": "github"
       },
       "original": {
@@ -781,11 +781,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1744541286,
-        "narHash": "sha256-xkzVb/9806Pii5wUoaS2bqvxFqjXHLmgY5Escyh+gB8=",
+        "lastModified": 1744569139,
+        "narHash": "sha256-9qJaSPR7IO9LilJ74QLSXfmfEhGny4xxwu5EnJ+lO0w=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "540469e5551f3083ec8ec474decab13d3ac91cac",
+        "rev": "33d7cccec40f9979127d7911250789181da9a1d4",
         "type": "github"
       },
       "original": {

@@ -1,4 +1,9 @@
-{ inputs, outputs, ... }:
+{
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -27,6 +32,10 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
   users.extraGroups.vboxusers.members = [ "sid" ];
+
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [ "sid" ];
+  environment.systemPackages = [ pkgs.docker-compose ];
 
   normalUsers = {
     sid = {
