@@ -9,7 +9,15 @@
 
   # https://nixos.wiki/wiki/Overlays
   modifications =
-    final: prev: (import ./instaloader.nix) final prev // inputs.core.overlays.modifications final prev;
+    final: prev:
+    let
+      files = [
+        ./instaloader.nix
+        # ./zathura.nix # FIXME: How to use overrideScope?
+      ];
+      imports = builtins.map (f: import f final prev) files;
+    in
+    builtins.foldl' (a: b: a // b) { } imports // inputs.core.overlays.modifications final prev;
 
   # unstable nixpkgs accessible through 'pkgs.unstable'
   unstable-packages = final: prev: {
@@ -19,9 +27,17 @@
     };
   };
 
-  # old-stable nixpkgs accessible through 'pkgs.old'
+  # old-stable nixpkgs accessible through 'pkgs.old-stable'
   old-stable-packages = final: prev: {
-    old = import inputs.nixpkgs-old-stable {
+    old-stable = import inputs.nixpkgs-old-stable {
+      inherit (final) system;
+      inherit (prev) config;
+    };
+  };
+
+  # old-old-stable nixpkgs accessible through 'pkgs.old-old-stable'
+  old-old-stable-packages = final: prev: {
+    old-old-stable = import inputs.nixpkgs-old-old-stable {
       inherit (final) system;
       inherit (prev) config;
     };

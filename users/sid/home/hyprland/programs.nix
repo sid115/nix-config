@@ -104,4 +104,6 @@
       nix-direnv.enable = true;
     };
   };
+
+  programs.zathura.package = pkgs.old-old-stable.zathura; # https://github.com/pwmt/zathura/issues/447
 }
