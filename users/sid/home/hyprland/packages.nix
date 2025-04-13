@@ -16,7 +16,6 @@
       spotify
       texliveFull
       wineWowPackages.waylandFull
-      zoom-us
       zotero
     ]
     # tools

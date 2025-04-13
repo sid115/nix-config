@@ -1,11 +1,13 @@
 {
   inputs,
+  config,
   pkgs,
   ...
 }:
 
 {
   imports = [
+    ./flatpak.nix
     ./fzf-open.nix
     ./gpg.nix
     ./packages.nix
@@ -24,14 +26,19 @@
     enable = true;
     autostart = true;
     settings = {
-      bind = [
-        "$mod,       g, exec, gimp"
-        "$mod,       s, exec, kitty -T spotify -e spotify_player"
-        "$mod,       v, exec, virt-manager"
-        "$mod,       z, exec, zoom-us"
-        "$mod CTRL,  o, exec, obs"
-        "$mod SHIFT, a, exec, chromium --app=https://ai.portuus.de"
-      ];
+      bind =
+        let
+          # flatpak = "${config.services.flatpak.package}/bin/flatpak"; # https://github.com/gmodena/nix-flatpak/issues/156
+          flatpak = "${pkgs.flatpak}/bin/flatpak";
+        in
+        [
+          "$mod,       g, exec, gimp"
+          "$mod,       s, exec, kitty -T spotify -e spotify_player"
+          "$mod,       v, exec, virt-manager"
+          "$mod,       z, exec, ${flatpak} run us.zoom.Zoom"
+          "$mod CTRL,  o, exec, obs"
+          "$mod SHIFT, a, exec, chromium --app=https://ai.portuus.de"
+        ];
       windowrulev2 = [
         "workspace 4, title:^newsboat$"
         "workspace 6, class:^thunderbird$, title:Thunderbird$"
