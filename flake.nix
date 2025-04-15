@@ -32,7 +32,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     nix-matlab.url = "gitlab:doronbehar/nix-matlab";
-    nix-matlab.inputs.nixpkgs.follows = "nixpkgs";
+    nix-matlab.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs =
