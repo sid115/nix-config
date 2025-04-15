@@ -9,6 +9,7 @@
       gimp
       inkscape
       jellyfin-media-player
+      # matlab # error: undefined variable 'libgbm' -> we need nixpkgs-unstable
       mermaid-cli
       octaveFull
       pdfarranger
