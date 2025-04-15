@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   ...
 }:
@@ -28,7 +27,6 @@
     settings = {
       bind =
         let
-          # flatpak = "${config.services.flatpak.package}/bin/flatpak"; # https://github.com/gmodena/nix-flatpak/issues/156
           flatpak = "${pkgs.flatpak}/bin/flatpak";
         in
         [

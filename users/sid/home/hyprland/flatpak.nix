@@ -20,6 +20,5 @@
     ];
   };
 
-  # https://github.com/gmodena/nix-flatpak/issues/156
   home.packages = [ pkgs.flatpak ];
 }
