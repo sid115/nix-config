@@ -28,6 +28,12 @@
       port = 2299;
       user = "sid";
     };
+    vde-win10 = {
+      host = "vw vde-win10";
+      hostname = "192.168.188.22";
+      port = 22;
+      user = "sid";
+    };
   };
 
   programs.sftpman.mounts = {
