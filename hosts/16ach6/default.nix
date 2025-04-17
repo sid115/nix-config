@@ -10,7 +10,7 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    # ./vfio.nix # FIXME
+    ./vfio.nix # FIXME
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.laptop
@@ -29,13 +29,9 @@
     pipewire.enable = true;
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "sid" ];
-
-  virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "sid" ];
-  environment.systemPackages = [ pkgs.docker-compose ];
+  # virtualisation.docker.enable = true;
+  # users.extraGroups.docker.members = [ "sid" ];
+  # environment.systemPackages = [ pkgs.docker-compose ];
 
   normalUsers = {
     sid = {
