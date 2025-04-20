@@ -13,7 +13,7 @@
 
   programs.librewolf = {
     policies.Homepage.StartPage = "previous-session";
-    profiles.default.extensions =
+    profiles.default.extensions.packages =
       with inputs.nur.legacyPackages."${pkgs.system}".repos.rycee.firefox-addons; [
         zotero-connector
       ];
@@ -93,7 +93,7 @@
     vscode = {
       enable = true;
       package = pkgs.vscodium;
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         mkhl.direnv
         ms-vscode.cmake-tools
         ms-vscode.cpptools

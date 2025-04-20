@@ -30,7 +30,7 @@
     plugins = {
       avante = {
         enable = true;
-        # autoLoad = true; # only on unstable
+        autoLoad = true;
         settings = {
           auto_suggestions_provider = null;
           provider = "openrouter";
