@@ -24,6 +24,7 @@
       aichat
       compose2nix
       duden
+      ftx-prog
       gptfdisk
       instaloader
       localsend
@@ -43,7 +44,6 @@
       local.pdf2printable
       local.transcribe
       local.yt2rss
-      unstable.ftx-prog
     ]
     # reverse engineering
     ++ [

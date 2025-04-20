@@ -49,7 +49,7 @@ in
     (callPackage pass2csv { })
   ];
 
-  programs.librewolf.profiles.default.extensions =
+  programs.librewolf.profiles.default.extensions.packages =
     with inputs.nur.legacyPackages."${pkgs.system}".repos.rycee.firefox-addons; [
       bitwarden
     ];

@@ -1,11 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     core.url = "github:sid115/nix-core/develop";
@@ -14,10 +14,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.11";
+    nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     nixos-mailserver.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim.url = "github:nix-community/nixvim/nixos-24.11";
+    nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
@@ -26,13 +26,13 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     nix-matlab.url = "gitlab:doronbehar/nix-matlab";
-    nix-matlab.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    nix-matlab.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
