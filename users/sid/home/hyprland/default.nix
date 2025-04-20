@@ -6,6 +6,7 @@
 
 {
   imports = [
+    ./bitwarden.nix
     ./flatpak.nix
     ./fzf-open.nix
     ./gpg.nix
