@@ -37,13 +37,14 @@
     sid = {
       name = "sid";
       extraGroups = [
-        "input"
         "audio"
+        "dialout"
         "floppy"
+        "input"
         "lp"
+        "networkmanager"
         "video"
         "wheel"
-        "networkmanager"
       ];
       sshKeyFiles = [ ../../users/sid/pubkeys/gpg.pub ];
     };
