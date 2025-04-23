@@ -27,24 +27,25 @@
 
   programs.nixvim = {
     enable = true;
-    plugins = {
-      avante = {
-        enable = true;
-        autoLoad = true;
-        settings = {
-          auto_suggestions_provider = null;
-          provider = "openrouter";
-          vendors = {
-            openrouter = {
-              __inherited_from = "openai";
-              endpoint = "https://openrouter.ai/api/v1";
-              api_key_name = "OPENROUTER_API_KEY";
-              model = "google/gemini-2.0-flash-001";
-            };
-          };
-        };
-      };
-    };
+    # FIXME: api key is not set
+    # plugins = {
+    #   avante = {
+    #     enable = true;
+    #     autoLoad = true;
+    #     settings = {
+    #       auto_suggestions_provider = null;
+    #       provider = "openrouter";
+    #       vendors = {
+    #         openrouter = {
+    #           __inherited_from = "openai";
+    #           endpoint = "https://openrouter.ai/api/v1";
+    #           api_key_name = "OPENROUTER_API_KEY";
+    #           model = "google/gemini-2.0-flash-001";
+    #         };
+    #       };
+    #     };
+    #   };
+    # };
   };
 
   # xdg might not be available, hence `home.file`
