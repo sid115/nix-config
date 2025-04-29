@@ -9,6 +9,7 @@
       gimp
       inkscape
       jellyfin-media-player
+      kicad
       matlab
       mermaid-cli
       octaveFull
