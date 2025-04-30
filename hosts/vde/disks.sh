@@ -22,29 +22,21 @@ udevadm settle
 
 wait_for_device $SSD
 
-echo "Wiping filesystem on $SSD..."
-wipefs -a $SSD
-
-echo "Clearing partition table on $SSD..."
-sgdisk --zap-all $SSD
-
 echo "Partitioning $SSD..."
-sgdisk -n1:1M:+1G -t1:EF00 -c1:BOOT $SSD
-sgdisk -n2:0:0    -t2:8304 -c2:ROOT $SSD
+sgdisk -n5:0:0 -t5:8304 -c5:ROOT $SSD
 partprobe -s $SSD
 udevadm settle
 
-wait_for_device ${SSD}-part1
-wait_for_device ${SSD}-part2
+wait_for_device ${SSD}-part1 # Windows ESP
+wait_for_device ${SSD}-part5
 
 echo "Formatting partitions..."
-mkfs.vfat -F 32 -n BOOT "${SSD}-part1"
-mkfs.ext4 -L ROOT "${SSD}-part2"
+mkfs.ext4 -L ROOT "${SSD}-part5"
 
 echo "Mounting partitions..."
-mount -o X-mount.mkdir "${SSD}-part2" "$MNT"
+mount -o X-mount.mkdir "${SSD}-part5" "$MNT"
 mkdir -p "$MNT/boot"
-mount -t vfat -o fmask=0077,dmask=0077,iocharset=iso8859-1 "${SSD}-part1" "$MNT/boot"
+mount "${SSD}-part1" "$MNT/boot"
 
 echo "Partitioning and setup complete:"
 lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL

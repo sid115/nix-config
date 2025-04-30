@@ -9,13 +9,13 @@
     ./boot.nix
     ./gnome.nix
     ./hardware.nix
+    ./osx-kvm.nix
     ./packages.nix
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.pipewire
-    inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
   ];
@@ -28,10 +28,6 @@
     pipewire.enable = true;
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "sid" ];
-
   normalUsers = {
     sid = {
       name = "sid";
@@ -41,6 +37,8 @@
       ];
     };
   };
+
+  time.hardwareClockInLocalTime = true; # Windows compatibility
 
   system.stateVersion = "24.11";
 }
