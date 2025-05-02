@@ -17,7 +17,6 @@
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
-    inputs.core.nixosModules.pipewire
 
     outputs.nixosModules.common
   ];
@@ -26,7 +25,6 @@
 
   services = {
     openssh.enable = true;
-    pipewire.enable = true;
   };
 
   # virtualisation.docker.enable = true;
