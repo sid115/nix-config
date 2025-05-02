@@ -2,7 +2,7 @@
 
 > Important: Install Windows 10 *before* NixOS
 
-Before setup, press `CTRL+F10`. Then, enter the following commands in the terminal window:
+Before setup, press `SHIFT+F10`. Then, enter the following commands in the terminal window:
 
 ```
 diskpart
