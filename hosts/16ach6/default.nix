@@ -31,6 +31,13 @@
   # users.extraGroups.docker.members = [ "sid" ];
   # environment.systemPackages = [ pkgs.docker-compose ];
 
+  # https://github.com/quickemu-project/quickemu
+  boot.extraModprobeConfig = ''
+    options kvm_amd nested=1
+    options kvm ignore_msrs=1 report_ignored_msrs=0
+  '';
+  environment.systemPackages = [ pkgs.quickemu ];
+
   normalUsers = {
     sid = {
       name = "sid";
