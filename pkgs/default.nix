@@ -4,7 +4,6 @@
 }:
 
 {
-  chatbox = pkgs.callPackage ./chatbox { };
   otp = pkgs.callPackage ./otp { };
   pdf2printable = pkgs.callPackage ./pdf2printable { };
   spotify-to-tidal = pkgs.callPackage ./spotify-to-tidal { };
