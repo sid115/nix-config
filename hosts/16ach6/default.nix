@@ -10,13 +10,15 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    ./vfio.nix # FIXME
+    # ./vfio.nix # FIXME
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.laptop
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.normalUsers
+    inputs.core.nixosModules.nvidia
     inputs.core.nixosModules.openssh
+    inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
   ];
@@ -37,6 +39,8 @@
     options kvm ignore_msrs=1 report_ignored_msrs=0
   '';
   environment.systemPackages = [ pkgs.quickemu ];
+  users.extraGroups.libvirtd.members = [ "sid" ];
+  users.extraGroups.qemu-libvirtd.members = [ "sid" ];
 
   normalUsers = {
     sid = {

@@ -52,5 +52,6 @@ function cdf() {
   if [[ -n "$selected_dir" ]]; then
     cd "$selected_dir" || echo "Failed to cd into '$selected_dir'"
     pwd
+    ls -lAh
   fi
 }
