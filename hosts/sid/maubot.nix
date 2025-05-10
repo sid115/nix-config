@@ -1,0 +1,77 @@
+{ config, ... }:
+
+# Setup:
+# Create bot: $ register_new_matrix_user
+# Get the user's access token in Element
+# Visit https://sid.ovh/_matrix/maubot
+# Create a client # FIXME: Invalid homeserver or access token
+
+let
+  cfg = config.services.maubot;
+  matrix = config.services.matrix-synapse;
+in
+{
+  services.maubot = {
+    enable = true;
+    extraConfigFile = config.sops.templates."maubot/extra-config-file".path;
+    plugins = with cfg.package.plugins; [
+      reminder
+    ];
+    settings = with matrix.settings; {
+      homeservers = {
+        "${matrix.settings.server_name}" = {
+          url = "${matrix.settings.public_baseurl}/_matrix/client/v3";
+        };
+      };
+      server.public_url = public_baseurl;
+      plugin_directories = with config.users.users.maubot; {
+        upload = home + "/plugins";
+        load = [ (home + "/plugins") ];
+        trash = home + "/trash";
+      };
+      plugin_databases = with config.users.users.maubot; {
+        sqlite = home + "/plugins";
+      };
+      # logging = with config.users.users.maubot; {
+      #   handlers.file.filename = home + "/maubot.log";
+      # };
+    };
+  };
+
+  environment.systemPackages = [
+    cfg.package
+  ];
+
+  systemd.tmpfiles.rules = with cfg.settings.plugin_directories; [
+    "d ${upload} 0755 maubot maubot -"
+    "d ${trash} 0755 maubot maubot -"
+  ];
+
+  services.nginx.virtualHosts."${matrix.settings.server_name}".locations."^~ /_matrix/maubot/" = {
+    proxyPass = with cfg.settings.server; "http://${hostname}:${toString port}";
+    proxyWebsockets = true;
+  };
+
+  sops =
+    let
+      owner = "maubot";
+      group = "maubot";
+      mode = "0440";
+    in
+    {
+      secrets."maubot/admins/sid" = {
+        inherit owner group mode;
+      };
+      templates."maubot/extra-config-file" = {
+        inherit owner group mode;
+        content = ''
+          homeservers:
+              ${matrix.settings.server_name}:
+                  url: ${matrix.settings.public_baseurl}/_matrix/client/v3
+                  secret: ${config.sops.placeholder."matrix/registration-shared-secret"}
+          admins:
+              sid: ${config.sops.placeholder."maubot/admins/sid"}
+        '';
+      };
+    };
+}

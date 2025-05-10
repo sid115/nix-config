@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  config,
   ...
 }:
 
@@ -8,6 +9,7 @@
   imports = [
     ./boot.nix
     ./hardware.nix
+    ./maubot.nix
     ./packages.nix
 
     inputs.core.nixosModules.common
