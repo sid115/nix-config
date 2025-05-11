@@ -17,13 +17,13 @@ in
     plugins = with cfg.package.plugins; [
       reminder
     ];
-    settings = with matrix.settings; {
-      homeservers = {
-        "${matrix.settings.server_name}" = {
-          url = "${matrix.settings.public_baseurl}/_matrix/client/v3";
+    settings = {
+      homeservers = with matrix.settings; {
+        "${server_name}" = {
+          url = "${public_baseurl}/_matrix/client/v3";
         };
       };
-      server.public_url = public_baseurl;
+      server.public_url = matrix.settings.public_baseurl;
       plugin_directories = with config.users.users.maubot; {
         upload = home + "/plugins";
         load = [ (home + "/plugins") ];
@@ -65,10 +65,10 @@ in
       templates."maubot/extra-config-file" = {
         inherit owner group mode;
         content = ''
-          homeservers:
-              ${matrix.settings.server_name}:
-                  url: ${matrix.settings.public_baseurl}/_matrix/client/v3
-                  secret: ${config.sops.placeholder."matrix/registration-shared-secret"}
+          # homeservers:
+          #     ${matrix.settings.server_name}:
+          #         url: ${matrix.settings.public_baseurl}/_matrix/client/v3
+          #         secret: ${config.sops.placeholder."matrix/registration-shared-secret"}
           admins:
               sid: ${config.sops.placeholder."maubot/admins/sid"}
         '';
