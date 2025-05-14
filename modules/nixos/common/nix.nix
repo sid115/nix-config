@@ -29,6 +29,21 @@
       options = "--delete-older-than 30d";
     };
 
+    # flake alias for nix-core
+    registry = {
+      core = {
+        from = {
+          id = "core";
+          type = "indirect";
+        };
+        to = {
+          owner = "sid115";
+          repo = "nix-core";
+          type = "github";
+        };
+      };
+    };
+
     settings = {
       # binary caches
       substituters = [
