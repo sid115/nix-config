@@ -27,6 +27,7 @@
       compose2nix
       duden
       ftx-prog
+      gitingest
       gptfdisk
       instaloader
       localsend
@@ -40,7 +41,6 @@
       subfinder
       yt-dlp
 
-      core.gitingest
       core.marker-pdf
       local.otp
       local.pdf2printable

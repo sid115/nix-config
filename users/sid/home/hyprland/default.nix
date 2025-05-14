@@ -51,6 +51,11 @@
 
         "float, class:^Open Files$"
       ];
+      exec-once = [
+        "[workspace 5 silent] librewolf"
+        "[workspace 6 silent] thunderbird"
+        "[workspace 8 silent] element-desktop"
+      ];
     };
   };
 

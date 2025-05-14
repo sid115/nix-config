@@ -1,6 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # last commit before https://github.com/NixOS/nixpkgs/commit/0cb44692dc94b39cb4f781489090dac13705e4ac
+    # see https://github.com/NixOS/nixpkgs/issues/404763
+    nixpkgs.url = "github:nixos/nixpkgs/818012b51799ab3ecbfb49fc02cd1641a1dbfb9c";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-23.11";

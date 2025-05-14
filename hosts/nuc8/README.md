@@ -39,3 +39,7 @@ exit
 Close the terminal and proceed as usual.
 
 After booting into your finished Windows installation, resize the C drive to make some space for your Linux root and swap partitions.
+
+# NixOS config
+
+See [*Autodetection with systemd-boot*](https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows).
