@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports = [ ../../hyprland ];
 
@@ -61,6 +63,9 @@
     vbox-up = "VBoxManage startvm ubuntu-sopc --type headless";
     vbox-down = "VBoxManage controlvm ubuntu-sopc poweroff";
     vbox-list = "VBoxManage list vms --long | grep -e '^Name:' -e '^State:'";
+
+    dock-on = "hyprctl keyword monitor eDP-1, disable";
+    dock-off = "hyprctl keyword monitor eDP-1, enable";
   };
 
   services.spotifyd.settings.device_name = "16ach6";
