@@ -18,12 +18,12 @@
 
     settings = {
       # binary caches
-      substituters = [
-        "https://cache.portuus.de"
-      ];
-      trusted-public-keys = [
-        "cache.portuus.de:INZRjwImLIbPbIx8Qp38gTVmSNL0PYE4qlkRzQY2IAU="
-      ];
+      # substituters = [
+      #   "https://cache.portuus.de"
+      # ];
+      # trusted-public-keys = [
+      #   "cache.portuus.de:INZRjwImLIbPbIx8Qp38gTVmSNL0PYE4qlkRzQY2IAU="
+      # ];
     };
   };
 }
