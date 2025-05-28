@@ -5,13 +5,11 @@
     with pkgs;
     [
       audacity
-      comfyui
       drawio
       gimp
       inkscape
       jellyfin-media-player
       kicad
-      matlab
       mermaid-cli
       octaveFull
       pdfarranger
@@ -41,18 +39,18 @@
       subfinder
       yt-dlp
 
-      core.marker-pdf
+      # core.marker-pdf
       local.otp
       local.pdf2printable
       local.transcribe
       local.yt2rss
     ]
     # reverse engineering
-    ++ [
-      checksec
-      ghidra-bin
-      ida-free
-    ]
+    # ++ [
+    #   checksec
+    #   ghidra-bin
+    #   ida-free
+    # ]
     # android
     ++ [
       adbfs-rootless

@@ -1,4 +1,4 @@
-{ inputs, outputs, ... }:
+{ outputs, ... }:
 
 {
   nixpkgs.overlays = [
@@ -8,7 +8,5 @@
     outputs.overlays.old-old-stable-packages
     outputs.overlays.old-stable-packages
     outputs.overlays.stable-packages
-
-    inputs.nix-matlab.overlay
   ];
 }

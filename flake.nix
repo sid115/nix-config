@@ -1,9 +1,9 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -30,9 +30,6 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
-
-    nix-matlab.url = "gitlab:doronbehar/nix-matlab";
-    nix-matlab.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
