@@ -7,5 +7,6 @@
   '';
 
   sops.secrets.nextcloud = { };
+  sops.secrets.openrouter-api-key = { };
   sops.secrets.tt-rss = { };
 }
