@@ -44,7 +44,6 @@
 
   normalUsers = {
     sid = {
-      name = "sid";
       extraGroups = [
         "audio"
         "dialout"

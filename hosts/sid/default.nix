@@ -59,7 +59,6 @@
 
   normalUsers = {
     sid = {
-      name = "sid";
       extraGroups = [ "wheel" ];
       sshKeyFiles = [
         ../../users/sid/pubkeys/gpg.pub

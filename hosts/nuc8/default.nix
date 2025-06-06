@@ -25,7 +25,6 @@
 
   normalUsers = {
     sid = {
-      name = "sid";
       extraGroups = [
         "audio"
         "floppy"
