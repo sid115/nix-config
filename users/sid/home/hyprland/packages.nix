@@ -35,6 +35,7 @@
       p7zip
       rclone
       rustfmt
+      showmethekey
       speedtest-cli
       subfinder
       yt-dlp
