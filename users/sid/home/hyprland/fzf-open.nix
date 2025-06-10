@@ -4,7 +4,7 @@ let
   fzf-dirs = "~/doc ~/img ~/aud ~/dls ~/src ~/.config ~/.local";
 
   fzf-open = pkgs.writeShellScriptBin "fzf-open" ''
-    fzf --preview="bat --style=numbers --color=always {}" --bind "enter:execute(hyprctl dispatch togglespecialworkspace fzf-open && xdg-open {} > /dev/null 2>&1 &)"
+    fzf --preview="pistol {}" --bind "enter:execute(hyprctl dispatch togglespecialworkspace fzf-open && xdg-open {} > /dev/null 2>&1 &)"
   '';
 in
 {
@@ -15,6 +15,7 @@ in
       ];
       windowrulev2 = [
         "float, class:floating"
+        "size 50% 50%, title:fzf-open"
       ];
     };
     extraConfig = ''

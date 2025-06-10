@@ -12,10 +12,10 @@
     ./osx-kvm.nix
     ./packages.nix
 
+    inputs.core.nixosModules.audio
     inputs.core.nixosModules.common
     inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
-    inputs.core.nixosModules.pipewire
 
     outputs.nixosModules.common
   ];

@@ -12,6 +12,9 @@
     # core.url = "git+file:///home/sid/src/nix-core";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
@@ -30,6 +33,9 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -41,10 +47,31 @@
     }@inputs:
     let
       inherit (self) outputs;
+
       supportedSystems = [
         "x86_64-linux"
       ];
+
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+      deployPkgs = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import nixpkgs {
+          inherit system;
+          overlays = [
+            inputs.deploy-rs.overlay.default
+            (self: super: {
+              deploy-rs = {
+                inherit (pkgs) deploy-rs;
+                lib = super.deploy-rs.lib;
+              };
+            })
+          ];
+        }
+      );
     in
     {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
@@ -113,5 +140,31 @@
           ];
         };
       };
+
+      deploy.nodes = {
+        sid.profiles.system = {
+          user = "sid";
+          path = deployPkgs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.sid;
+        };
+      };
+
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          flakePkgs = self.packages.${system};
+        in
+        {
+          pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              nixfmt-rfc-style.enable = true;
+            };
+          };
+          build-packages = pkgs.linkFarm "flake-packages-${system}" flakePkgs;
+          # deploy-checks = inputs.deploy-rs.lib.${system}.deployChecks self.deploy;
+          inherit (inputs.deploy-rs.lib.${system}.deployChecks self.deploy) deploy-schema deploy-activate;
+        }
+      );
     };
 }
