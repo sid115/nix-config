@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SSD='/dev/disk/by-id/TODO'
+SSD='/dev/disk/by-id/nvme-TEAM_TM8FPD001T_TPBF2503240010201457'
 MNT='/mnt'
 SWAP_GB=16
 
