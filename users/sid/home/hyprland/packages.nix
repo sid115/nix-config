@@ -23,10 +23,12 @@
     ++ [
       aichat
       compose2nix
+      cutecom
       duden
       ftx-prog
       gitingest
       gptfdisk
+      gtkterm
       instaloader
       localsend
       magic-wormhole
@@ -38,6 +40,7 @@
       showmethekey
       speedtest-cli
       subfinder
+      xxd
       yt-dlp
 
       # core.marker-pdf
