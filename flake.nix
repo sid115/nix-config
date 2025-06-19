@@ -12,6 +12,8 @@
     # core.url = "git+file:///home/sid/src/nix-core";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
+    helloworld-test.url = "github:sid115/hs-helloworld-test/nix-flakes";
+
     deploy-rs.url = "github:serokell/deploy-rs";
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
 

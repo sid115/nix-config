@@ -2,6 +2,7 @@
   inputs,
   outputs,
   config,
+  pkgs,
   ...
 }:
 
@@ -41,7 +42,12 @@
         };
       };
     };
-    nginx.enable = true;
+    nginx = {
+      enable = true;
+      virtualHosts."sid.ovh" = {
+        root = "${inputs.helloworld-test.packages.${pkgs.system}.default}/html";
+      };
+    };
     ntfy-sh = {
       enable = true;
       reverseProxy.enable = true;
