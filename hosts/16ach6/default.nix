@@ -29,6 +29,10 @@
     openssh.enable = true;
   };
 
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
+
   # virtualisation.docker.enable = true;
   # users.extraGroups.docker.members = [ "sid" ];
   # environment.systemPackages = [ pkgs.docker-compose ];
