@@ -1,31 +1,32 @@
 { inputs, config, ... }:
 
 {
-  imports = [ inputs.core.homeModules.nextcloud-sync ];
+  imports = [
+    inputs.core.homeModules.nextcloud-sync
+  ];
 
-  services.nextcloud-sync = {
-    enable = true;
-    remote = "cloud.portuus.de";
-    passwordFile = config.sops.secrets.nextcloud.path;
-    connections = [
-      {
-        local = "/home/sid/aud";
-        remote = "/aud";
-      }
-      {
-        local = "/home/sid/doc";
-        remote = "/doc";
-      }
-      {
-        local = "/home/sid/img";
-        remote = "/img";
-      }
-      {
-        local = "/home/sid/vid";
-        remote = "/vid";
-      }
-    ];
-  };
+  services.nextcloud-sync =
+    let
+      mkConnection = dir: {
+        local = config.home.homeDirectory + "/" + dir;
+        remote = "/" + dir;
+      };
+
+      mkConnections = dirs: map mkConnection dirs;
+
+      connections = [
+        "aud"
+        "doc"
+        "img"
+        "vid"
+      ];
+    in
+    {
+      enable = true;
+      remote = "cloud.portuus.de";
+      passwordFile = config.sops.secrets.nextcloud.path;
+      connections = mkConnections connections;
+    };
 
   services.spotifyd = {
     enable = true;

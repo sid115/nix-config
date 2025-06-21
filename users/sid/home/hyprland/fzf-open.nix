@@ -11,7 +11,7 @@ in
   wayland.windowManager.hyprland = {
     settings = {
       bind = [
-        "$mod, Space, togglespecialworkspace, fzf-open"
+        # "$mod, Space, togglespecialworkspace, fzf-open"
       ];
       windowrulev2 = [
         "float, class:floating"
