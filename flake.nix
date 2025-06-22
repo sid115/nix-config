@@ -185,7 +185,6 @@
           };
           build-packages = pkgs.linkFarm "flake-packages-${system}" flakePkgs;
           # deploy-checks = inputs.deploy-rs.lib.${system}.deployChecks self.deploy;
-          inherit (inputs.deploy-rs.lib.${system}.deployChecks self.deploy) deploy-schema deploy-activate;
         }
       );
     };

@@ -12,9 +12,10 @@
     ./osx-kvm.nix
     ./packages.nix
 
+    ../../users/sid
+
     inputs.core.nixosModules.audio
     inputs.core.nixosModules.common
-    inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
@@ -26,15 +27,6 @@
   services = {
     openssh.enable = true;
     pipewire.enable = true;
-  };
-
-  normalUsers = {
-    sid = {
-      extraGroups = [ "wheel" ];
-      sshKeyFiles = [
-        ../../users/sid/pubkeys/gpg.pub
-      ];
-    };
   };
 
   time.hardwareClockInLocalTime = true; # Windows compatibility

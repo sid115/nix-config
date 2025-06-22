@@ -13,10 +13,11 @@
     ./maubot.nix
     ./packages.nix
 
+    ../../users/sid
+
     inputs.core.nixosModules.common
     inputs.core.nixosModules.matrix-synapse
     inputs.core.nixosModules.nginx
-    inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.ntfy-sh
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.sops
@@ -57,15 +58,6 @@
           }
         ];
       };
-    };
-  };
-
-  normalUsers = {
-    sid = {
-      extraGroups = [ "wheel" ];
-      sshKeyFiles = [
-        ../../users/sid/pubkeys/gpg.pub
-      ];
     };
   };
 

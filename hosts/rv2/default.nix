@@ -6,10 +6,11 @@
     ./hardware.nix
     ./packages.nix
 
+    ../../users/sid
+
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.laptop
     inputs.core.nixosModules.hyprland
-    inputs.core.nixosModules.normalUsers
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.virtualization
 
@@ -32,9 +33,7 @@
         "lp"
         "networkmanager"
         "video"
-        "wheel"
       ];
-      sshKeyFiles = [ ../../users/sid/pubkeys/gpg.pub ];
     };
   };
 
