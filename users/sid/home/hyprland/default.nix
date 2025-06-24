@@ -6,13 +6,14 @@
 
 {
   imports = [
-    ./anyrun.nix
+    # ./anyrun.nix
     # ./bitwarden.nix
     ./flatpak.nix
     ./fzf-open.nix
     ./gpg.nix
     ./packages.nix
     ./programs.nix
+    # ./recoll.nix
     ./rclone.nix
     ./services.nix
     ./ssh-hosts.nix
