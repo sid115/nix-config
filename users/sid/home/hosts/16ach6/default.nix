@@ -14,7 +14,7 @@
   programs.ssh.matchBlocks = {
     arch = {
       host = "a arch";
-      hostname = "192.168.122.15";
+      hostname = "192.168.122.199";
       port = 22;
       user = "sid";
     };
