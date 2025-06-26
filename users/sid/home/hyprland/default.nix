@@ -38,6 +38,7 @@
           "$mod,       v, exec, virt-manager"
           "$mod,       z, exec, ${flatpak} run us.zoom.Zoom"
           "$mod CTRL,  o, exec, obs"
+          "$mod CTRL,  p, exec, otp"
           "$mod SHIFT, a, exec, chromium --app=https://ai.portuus.de"
         ];
       windowrulev2 = [

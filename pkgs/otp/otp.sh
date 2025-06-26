@@ -1,27 +1,20 @@
-help() {
-  echo "Usage: otp OPTION"
-  echo
-  echo "Retrieve one-time password for various services"
-  echo
-  echo "Options:"
-  echo "  github  Retrieve GitHub OTP code"
-  echo "  help    Display this help message"
+#!/usr/bin/env bash
+
+DMENU="bemenu"
+OPTIONS="github"
+
+CHOICE=$(echo -e "$OPTIONS" | "$DMENU" -p "OTP:")
+
+get_pass() {
+  pass otp -c "$1" 2>/dev/null
 }
 
-if [ $# -ne 1 ]; then
-  echo "Wrong number of arguments."
-  exit 1
-fi
-
-case "$1" in
-  "gh"|"github")
-    pass otp -c www/github.com
-    ;;
-  "help")
-    help
+case "$CHOICE" in
+  "github")
+    get_pass "www/github.com"
     ;;
   *)
-    echo "Error: Unknown option '$1'"
+    echo "Error: Unknown option '$CHOICE'"
     exit 1
     ;;
 esac
