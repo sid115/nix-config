@@ -19,6 +19,7 @@
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
+    outputs.nixosModules.docs
   ];
 
   networking.hostName = "vde";

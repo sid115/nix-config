@@ -15,6 +15,7 @@
     inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
+    outputs.nixosModules.docs
   ];
 
   networking.hostName = "nuc8";

@@ -22,6 +22,7 @@
     inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
+    outputs.nixosModules.docs
   ];
 
   networking.hostName = "16ach6";
