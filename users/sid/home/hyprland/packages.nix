@@ -18,6 +18,8 @@
       texliveFull
       wineWowPackages.waylandFull
       zotero
+
+      core.visual-paradigm-community
     ]
     # tools
     ++ [
