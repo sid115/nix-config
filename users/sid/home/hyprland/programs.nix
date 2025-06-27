@@ -6,6 +6,15 @@
 }:
 
 {
+  imports = [
+    inputs.core.homeModules.gemini-cli
+  ];
+
+  programs.gemini-cli = {
+    enable = true;
+    package = pkgs.core.gemini-cli;
+  };
+
   programs.gh = {
     enable = true;
     # TODO: set GH_TOKEN with sops
