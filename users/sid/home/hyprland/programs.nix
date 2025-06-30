@@ -12,7 +12,6 @@
 
   programs.gemini-cli = {
     enable = true;
-    package = pkgs.core.gemini-cli;
   };
 
   programs.gh = {
