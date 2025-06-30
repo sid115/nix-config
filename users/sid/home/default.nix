@@ -59,8 +59,6 @@
     };
   };
 
-  programs.zsh.initContent = builtins.readFile ./cdf.sh;
-
   # xdg might not be available, hence `home.file`
   home.file.nixpkgs_config = {
     target = ".config/nixpkgs/config.nix";
