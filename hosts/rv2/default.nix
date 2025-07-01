@@ -28,6 +28,7 @@
     sid = {
       extraGroups = [
         "audio"
+        "dialout"
         "floppy"
         "input"
         "libvirtd"
