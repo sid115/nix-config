@@ -51,8 +51,6 @@
         "workspace 10, class:^zoom$, title:^Zoom"
         "workspace 10, class:^org.qbittorrent.qBittorrent$"
         "workspace 10, title:^Virtual Machine Manager$"
-
-        "float, class:^Open Files$"
       ];
       exec-once = [
         "[workspace 5 silent] librewolf"
