@@ -4,7 +4,9 @@
 # Create bot: $ register_new_matrix_user
 # Get the user's access token in Element
 # Visit https://sid.ovh/_matrix/maubot
-# Create a client # FIXME: Invalid homeserver or access token
+# Create a client
+# Create an instance
+# TODO: Set homeserver secret
 
 let
   cfg = config.services.maubot;
@@ -18,11 +20,11 @@ in
       reminder
     ];
     settings = {
-      homeservers = with matrix.settings; {
-        "${server_name}" = {
-          url = "${public_baseurl}/_matrix/client/v3";
-        };
-      };
+      # homeservers = with matrix.settings; {
+      #   "${server_name}" = {
+      #     url = "${public_baseurl}/_matrix/client/v3";
+      #   };
+      # };
       server.public_url = matrix.settings.public_baseurl;
       plugin_directories = with config.users.users.maubot; {
         upload = home + "/plugins";
@@ -47,9 +49,15 @@ in
     "d ${trash} 0755 maubot maubot -"
   ];
 
-  services.nginx.virtualHosts."${matrix.settings.server_name}".locations."^~ /_matrix/maubot/" = {
-    proxyPass = with cfg.settings.server; "http://${hostname}:${toString port}";
-    proxyWebsockets = true;
+  services.nginx.virtualHosts."${matrix.settings.server_name}".locations = {
+    "^~ /_matrix/maubot/" = {
+      proxyPass = with cfg.settings.server; "http://${hostname}:${toString port}";
+      proxyWebsockets = true;
+    };
+    "^~ /_matrix/maubot/v1/logs" = {
+      proxyPass = with cfg.settings.server; "http://${hostname}:${toString port}";
+      proxyWebsockets = true;
+    };
   };
 
   sops =
@@ -65,13 +73,14 @@ in
       templates."maubot/extra-config-file" = {
         inherit owner group mode;
         content = ''
-          # homeservers:
-          #     ${matrix.settings.server_name}:
-          #         url: ${matrix.settings.public_baseurl}/_matrix/client/v3
-          #         secret: ${config.sops.placeholder."matrix/registration-shared-secret"}
+          homeservers:
+              ${matrix.settings.server_name}:
+                  url: http://localhost:8008
+                  secret: null
           admins:
               sid: ${config.sops.placeholder."maubot/admins/sid"}
         '';
+        # secret: ${config.sops.placeholder."matrix/registration-shared-secret"}
       };
     };
 }
