@@ -2,9 +2,11 @@
 
 # Setup:
 # Create bot: $ register_new_matrix_user
-# Get the user's access token in Element
+# Login as your admin user: $ mbc login
+# Authenticate as bot: $ mbc auth
+# Take not of access token and device ID
 # Visit https://sid.ovh/_matrix/maubot
-# Create a client
+# Create a client (if not already preset)
 # Create an instance
 # TODO: Set homeserver secret
 
