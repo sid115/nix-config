@@ -71,4 +71,11 @@
     nc-sync = "nextcloud-sync-all";
     synapse_change_display_name = "${pkgs.core.synapse_change_display_name}/bin/synapse_change_display_name -t $(${pkgs.pass}/bin/pass sid.ovh/matrix/access-token) -r sid.ovh";
   };
+
+  dbus.packages = [
+    pkgs.gnome-keyring
+  ];
+  home.sessionVariables = {
+    GNOME_KEYRING_CONTROL = "/run/user/1000/keyring/control";
+  };
 }
