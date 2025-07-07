@@ -5,7 +5,7 @@
     with pkgs;
     [
       audacity
-      cinny
+      cinny-desktop
       drawio
       gimp
       inkscape
