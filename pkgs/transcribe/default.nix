@@ -1,15 +1,18 @@
 {
-  python3,
+  python3Packages,
   ...
 }:
 
-python3.pkgs.buildPythonApplication {
+python3Packages.buildPythonApplication {
   pname = "transcribe";
   version = "1.0.0";
 
   src = ./.;
+  pyproject = true;
 
-  propagatedBuildInputs = [ python3.pkgs.openai ];
+  build-system = [ python3Packages.setuptools ];
+
+  propagatedBuildInputs = [ python3Packages.openai ];
 
   doCheck = false;
 
