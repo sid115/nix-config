@@ -24,6 +24,10 @@
     openssh.enable = true;
   };
 
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+  ];
+
   normalUsers = {
     sid = {
       extraGroups = [
