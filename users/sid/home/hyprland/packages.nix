@@ -47,7 +47,7 @@
       xxd
       yt-dlp
 
-      # core.marker-pdf
+      core.marker-pdf
       local.otp
       local.pdf2printable
       local.transcribe
