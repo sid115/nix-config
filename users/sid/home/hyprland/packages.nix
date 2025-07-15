@@ -29,6 +29,7 @@
       cutecom
       duden
       ftx-prog
+      gf
       gitingest
       gptfdisk
       gtkterm
