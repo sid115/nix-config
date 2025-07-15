@@ -41,6 +41,28 @@
     plugins = [ pkgs.obs-studio-plugins.wlrobs ];
   };
 
+  programs.opencode = {
+    enable = true;
+    settings = {
+      "$schema" = "https://opencode.ai/config.json";
+      theme = "opencode";
+      provider = {
+        openrouter = {
+          name = "OpenRouter";
+          api_key = "{file:${config.sops.secrets.openrouter-api-key.path}}";
+          models = {
+            "google/gemini-2.5-flash" = {
+              name = "Gemini 2.5 Flash";
+            };
+          };
+        };
+      };
+      model = "openrouter/google/gemini-2.5-flash";
+      autoshare = false;
+      autoupdate = false;
+    };
+  };
+
   programs.waybar.settings = {
     mainBar = {
       modules-right = [
