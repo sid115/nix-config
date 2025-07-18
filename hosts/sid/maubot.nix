@@ -19,6 +19,7 @@ in
     enable = true;
     extraConfigFile = config.sops.templates."maubot/extra-config-file".path;
     plugins = with cfg.package.plugins; [
+      github
       reminder
     ];
     settings = {
@@ -78,11 +79,10 @@ in
           homeservers:
               ${matrix.settings.server_name}:
                   url: http://localhost:8008
-                  secret: null
+                  secret: ${config.sops.placeholder."matrix/registration-shared-secret"}
           admins:
               sid: ${config.sops.placeholder."maubot/admins/sid"}
         '';
-        # secret: ${config.sops.placeholder."matrix/registration-shared-secret"}
       };
     };
 }
