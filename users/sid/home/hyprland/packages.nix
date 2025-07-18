@@ -33,7 +33,6 @@
       gitingest
       gptfdisk
       gtkterm
-      instaloader
       localsend
       magic-wormhole
       naabu
@@ -52,6 +51,10 @@
       local.pdf2printable
       local.transcribe
       local.yt2rss
+
+      (instaloader.overridePythonAttrs (oldAttrs: {
+        propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [ pkgs.python3Packages.browser-cookie3 ];
+      }))
     ]
     # reverse engineering
     # ++ [

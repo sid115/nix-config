@@ -8,7 +8,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    core.url = "github:sid115/nix-core/develop";
+    # core.url = "github:sid115/nix-core/develop";
+    core.url = "github:sid115/nix-core/feature/instaloader-module";
     # core.url = "git+file:///home/sid/src/nix-core";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
