@@ -115,16 +115,16 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1752861310,
-        "narHash": "sha256-5FjCxbyz81skMW/7Tn4rorQkKJXxbTXY/orNfdCEvAA=",
+        "lastModified": 1753027070,
+        "narHash": "sha256-LduJkkLC0aoPqdYiD6tVUnKC+DTWRe7ZG+PnmTXBS50=",
         "owner": "sid115",
         "repo": "nix-core",
-        "rev": "66d7919491afbb2cec5cda386a8520aa41aa6b3f",
+        "rev": "eaeece09c76e8caf088684687e7b3ebf4323e9bc",
         "type": "github"
       },
       "original": {
         "owner": "sid115",
-        "ref": "feature/instaloader-module",
+        "ref": "develop",
         "repo": "nix-core",
         "type": "github"
       }

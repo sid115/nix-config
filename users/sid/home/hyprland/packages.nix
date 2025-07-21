@@ -10,6 +10,7 @@
       gimp
       inkscape
       jellyfin-media-player
+      jitsi-meet-electron
       kicad
       mermaid-cli
       octaveFull
