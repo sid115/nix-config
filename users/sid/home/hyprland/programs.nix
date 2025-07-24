@@ -10,6 +10,21 @@
     inputs.core.homeModules.gemini-cli
   ];
 
+  # programs.yazi = {
+  #   keymap = {
+  #     prepend_keymap = [
+  #       {
+  #         on = "o";
+  #         run = [
+  #           "shell --orphan 'chromium'"
+  #           "open"
+  #         ];
+  #         desc = "";
+  #       }
+  #     ];
+  #   };
+  # };
+
   programs.gemini-cli = {
     enable = true;
   };

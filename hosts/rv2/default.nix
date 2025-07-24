@@ -4,7 +4,7 @@
   imports = [
     ./boot.nix
     ./hardware.nix
-    ./instaloader.nix
+    # ./instaloader.nix
     ./packages.nix
 
     ../../users/sid
