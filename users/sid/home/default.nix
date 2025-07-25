@@ -59,12 +59,9 @@
     };
   };
 
-  # xdg might not be available, hence `home.file`
-  home.file.nixpkgs_config = {
-    target = ".config/nixpkgs/config.nix";
-    text = ''
-      { allowUnfree = true; }
-    '';
+  nixpkgs.config = {
+    allowUnfree = true;
+    android_sdk.accept_license = true;
   };
 
   home.shellAliases = {
