@@ -66,7 +66,8 @@
     # android
     ++ [
       adbfs-rootless
-      android-studio-full
+      android-studio
+      android-studio-tools
       android-tools
       scrcpy
     ];
