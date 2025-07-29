@@ -42,6 +42,7 @@
       rclone
       rustfmt
       showmethekey
+      songrec
       speedtest-cli
       subfinder
       xxd
