@@ -4,14 +4,13 @@
   home.packages =
     with pkgs;
     [
-      audacity
-      cinny-desktop
+      # audacity # https://hydra.nixos.org/build/303340854
       drawio
       gimp
       inkscape
       jellyfin-media-player
       jitsi-meet-electron
-      kicad
+      # kicad # https://hydra.nixos.org/build/303379557
       mermaid-cli
       octaveFull
       pdfarranger
@@ -53,10 +52,6 @@
       local.pdf2printable
       local.transcribe
       local.yt2rss
-
-      (instaloader.overridePythonAttrs (oldAttrs: {
-        propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [ pkgs.python3Packages.browser-cookie3 ];
-      }))
     ]
     # reverse engineering
     # ++ [

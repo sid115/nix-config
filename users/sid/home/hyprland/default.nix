@@ -33,7 +33,6 @@
           flatpak = "${pkgs.flatpak}/bin/flatpak";
         in
         [
-          "$mod,       c, exec, cinny"
           "$mod,       g, exec, gimp"
           "$mod,       s, exec, kitty -T spotify -e spotify_player"
           "$mod,       v, exec, virt-manager"
@@ -48,7 +47,6 @@
         "workspace 7, title:^Jellyfin Media Player$"
         "workspace 7, title:^spotify$"
         "workspace 8, class:^Element$, title:^Element"
-        "workspace 8, class:^cinny$"
         "workspace 9, class:^chrome-ai.portuus.de"
         "workspace 10, class:^zoom$, title:^Zoom"
         "workspace 10, class:^org.qbittorrent.qBittorrent$"
@@ -57,9 +55,14 @@
       exec-once = [
         "[workspace 5 silent] librewolf"
         "[workspace 6 silent] thunderbird"
-        "[workspace 8 silent] cinny"
       ];
     };
+    extraConfig = ''
+      workspace = special:yazi, on-created-empty:kitty -T yazi -e yazi
+      bind = $mod, x, togglespecialworkspace, yazi
+      windowrule = float, title:^yazi$
+      windowrule = size 50% 50%, title:^yazi$
+    '';
   };
 
   styling = {

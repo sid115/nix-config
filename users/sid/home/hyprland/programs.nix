@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 
@@ -10,20 +11,26 @@
     inputs.core.homeModules.gemini-cli
   ];
 
-  # programs.yazi = {
-  #   keymap = {
-  #     prepend_keymap = [
-  #       {
-  #         on = "o";
-  #         run = [
-  #           "shell --orphan 'chromium'"
-  #           "open"
-  #         ];
-  #         desc = "";
-  #       }
-  #     ];
-  #   };
-  # };
+  programs.yazi =
+    let
+      hide-yazi-workspace = pkgs.writeShellScript "hide-yazi-workspace.sh" ''
+        (hyprctl monitors -j | ${lib.getExe pkgs.jq} -e 'any(.specialWorkspace.name == "special:yazi")' > /dev/null) && hyprctl dispatch togglespecialworkspace yazi
+      '';
+    in
+    {
+      keymap = {
+        mgr.prepend_keymap = [
+          {
+            on = "o";
+            run = [
+              "shell --orphan ${hide-yazi-workspace}"
+              "open"
+            ];
+            desc = "";
+          }
+        ];
+      };
+    };
 
   programs.gemini-cli = {
     enable = true;
