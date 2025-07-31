@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 
@@ -69,6 +70,7 @@
     enable = true;
     scheme = "oxocarbon";
   };
+  stylix.image = lib.mkForce null;
 
   home.shellAliases = {
     bt = "bluetoothctl";
