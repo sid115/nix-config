@@ -1,7 +1,6 @@
 {
   inputs,
   outputs,
-  config,
   pkgs,
   ...
 }:
@@ -15,6 +14,7 @@
 
     ../../users/sid
 
+    inputs.core.nixosModules.baibot
     inputs.core.nixosModules.common
     inputs.core.nixosModules.matrix-synapse
     inputs.core.nixosModules.nginx
@@ -29,6 +29,10 @@
   networking.domain = "sid.ovh";
 
   services = {
+    baibot = {
+      enable = true;
+      package = pkgs.core.baibot;
+    };
     openssh.enable = true;
     matrix-synapse = {
       enable = true;
