@@ -4,13 +4,13 @@
   home.packages =
     with pkgs;
     [
-      # audacity # https://hydra.nixos.org/build/303340854
+      audacity
       drawio
       gimp
       inkscape
       jellyfin-media-player
       jitsi-meet-electron
-      # kicad # https://hydra.nixos.org/build/303379557
+      kicad
       mermaid-cli
       octaveFull
       pdfarranger
