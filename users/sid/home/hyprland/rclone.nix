@@ -20,9 +20,4 @@ in
     user = ${sops.placeholder."rclone/sciebo/user"}
     pass = ${sops.placeholder."rclone/sciebo/pass"}
   '';
-
-  sops.secrets."rclone/portuus/pass" = { };
-  sops.secrets."rclone/sciebo/pass" = { };
-  sops.secrets."rclone/sciebo/url" = { };
-  sops.secrets."rclone/sciebo/user" = { };
 }

@@ -1,20 +1,20 @@
-{ config, ... }:
+{ inputs, ... }:
 
 {
-  sops.secrets.github-token = { };
-  sops.templates.access-tokens.content = ''
-    access-tokens = github.com=${config.sops.placeholder.github-token}
-  '';
+  imports = [
+    inputs.core.homeModules.sops
+  ];
 
-  sops.secrets.nextcloud = { };
-  sops.secrets.openrouter-api-key = { };
-  sops.secrets.tt-rss = { };
-
-  sops.secrets.gemini-api-key = { };
-  sops.templates.gemini-cli-env = {
-    content = ''
-      GEMINI_API_KEY=${config.sops.placeholder.gemini-api-key}
-    '';
-    path = config.home.homeDirectory + "/.gemini/.env";
+  sops.secrets = {
+    "rclone/portuus/pass" = { };
+    "rclone/sciebo/pass" = { };
+    "rclone/sciebo/url" = { };
+    "rclone/sciebo/user" = { };
+    gemini-api-key = { };
+    github-token = { };
+    nextcloud = { };
+    openrouter-api-key = { };
+    spotify = { };
+    tt-rss = { };
   };
 }

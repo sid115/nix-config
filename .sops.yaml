@@ -13,7 +13,7 @@ creation_rules:
     - age:
       - *user_sid
       - *host_rv2
-  - path_regex: users/sid/home/secrets/secrets.yaml$
+  - path_regex: users/sid/home/secrets.yaml$
     key_groups:
     - age:
       - *user_sid

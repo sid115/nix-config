@@ -67,4 +67,8 @@
       android-tools
       scrcpy
     ];
+
+  nixpkgs.config = {
+    android_sdk.accept_license = true; # for android-studio
+  };
 }
