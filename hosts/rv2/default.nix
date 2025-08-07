@@ -4,7 +4,6 @@
   imports = [
     ./boot.nix
     ./hardware.nix
-    # ./instaloader.nix
     ./packages.nix
 
     ../../users/sid
@@ -91,6 +90,12 @@
       # .all_branches_collapsed=0
     };
   };
+
+  programs.adb.enable = true;
+  users.users.sid.extraGroups = [
+    "adbusers"
+    "kvm"
+  ];
 
   services = {
     openssh.enable = true;
