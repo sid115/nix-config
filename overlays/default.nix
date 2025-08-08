@@ -12,7 +12,7 @@
     final: prev:
     let
       files = [
-        ./instaloader.nix
+        # ./instaloader.nix
         # ./zathura.nix # FIXME: How to use overrideScope?
       ];
       imports = builtins.map (f: import f final prev) files;

@@ -47,6 +47,12 @@
       xxd
       yt-dlp
 
+      (instaloader.overridePythonAttrs (oldAttrs: {
+        propagatedBuildInputs = (oldAttrs.propagatedBuildInputs or [ ]) ++ [
+          python3Packages.browser-cookie3
+        ];
+      }))
+
       core.marker-pdf
       local.otp
       local.pdf2printable
