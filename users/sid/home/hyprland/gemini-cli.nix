@@ -1,10 +1,6 @@
-{ inputs, config, ... }:
+{ config, ... }:
 
 {
-  imports = [
-    inputs.core.homeModules.gemini-cli
-  ];
-
   programs.gemini-cli = {
     enable = true;
   };
