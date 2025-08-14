@@ -18,7 +18,7 @@
           "$mod,       z, exec, ${flatpak} run us.zoom.Zoom"
           "$mod CTRL,  o, exec, obs"
           "$mod CTRL,  p, exec, otp"
-          "$mod SHIFT, a, exec, chromium --app=https://ai.portuus.de"
+          "$mod SHIFT, a, exec, chromium --app=https://ai.sid.ovh"
         ];
       windowrule = [
         "workspace 4, title:^newsboat$"
