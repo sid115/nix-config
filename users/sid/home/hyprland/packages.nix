@@ -11,6 +11,7 @@
       jellyfin-media-player
       jitsi-meet-electron
       kicad
+      ladybird
       mermaid-cli
       octaveFull
       pdfarranger
