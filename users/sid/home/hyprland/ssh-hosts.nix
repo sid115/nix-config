@@ -2,11 +2,12 @@
 
 {
   programs.ssh.matchBlocks = {
-    jfk = {
-      host = "j jfk";
-      hostname = "cgn.ovh";
-      port = 2299;
-      user = "jfk";
+    uvm = {
+      host = "u uvm";
+      hostname = "localhost";
+      port = 2222;
+      user = "root";
+      checkHostIP = false;
     };
     portuus = {
       host = "p portuus *.portuus.de";
