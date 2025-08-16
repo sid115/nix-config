@@ -1,13 +1,16 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 
 {
   imports = [
-    inputs.core.homeModules.styling
+    inputs.core.homeModules.stylix
   ];
 
-  styling = {
+  stylix = {
     enable = true;
     scheme = "oxocarbon";
+    targets = {
+      waybar'.enable = true;
+      bemenu'.enable = true;
+    };
   };
-  stylix.image = lib.mkForce null;
 }
