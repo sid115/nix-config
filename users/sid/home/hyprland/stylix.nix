@@ -7,7 +7,7 @@
 
   stylix = {
     enable = true;
-    scheme = "oxocarbon";
+    scheme = "moonfly";
     targets = {
       waybar'.enable = true;
       bemenu'.enable = true;
