@@ -22,6 +22,7 @@
     inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
+    outputs.nixosModules.docker
     outputs.nixosModules.docs
   ];
 
