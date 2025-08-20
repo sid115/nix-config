@@ -14,25 +14,7 @@
   programs.ssh.matchBlocks = {
     arch = {
       host = "a arch";
-      hostname = "192.168.122.199";
-      port = 22;
-      user = "sid";
-    };
-    ubuntu = {
-      host = "u ubuntu";
-      hostname = "127.0.0.1";
-      port = 3022;
-      user = "thk";
-    };
-    vde = {
-      host = "v vde";
-      hostname = "192.168.188.22";
-      port = 2299;
-      user = "sid";
-    };
-    vde-win10 = {
-      host = "vw vde-win10";
-      hostname = "192.168.188.22";
+      hostname = "192.168.122.105";
       port = 22;
       user = "sid";
     };
@@ -40,22 +22,10 @@
 
   programs.sftpman.mounts = {
     arch = {
-      host = "192.168.122.15";
+      host = "192.168.122.105";
       user = "sid";
       port = 22;
       mountPoint = "/home/sid";
-    };
-    ubuntu = {
-      host = "127.0.0.1";
-      user = "thk";
-      port = 3022;
-      mountPoint = "/home/thk/Desktop/iceduino_setup";
-    };
-    vde = {
-      host = "192.168.188.22";
-      user = "sid";
-      port = 2299;
-      mountPoint = "/home/sid/.config/nixos";
     };
   };
 
