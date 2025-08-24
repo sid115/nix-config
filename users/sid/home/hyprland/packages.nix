@@ -45,6 +45,7 @@
       songrec
       speedtest-cli
       subfinder
+      tmux
       xxd
       yt-dlp
 
