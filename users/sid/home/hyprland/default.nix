@@ -30,7 +30,7 @@
     ./xdg.nix
     ./yazi.nix
 
-    inputs.core.homeModules.virtualization
+    inputs.core.homeModules.virtualisation
   ];
 
   dbus.packages = [

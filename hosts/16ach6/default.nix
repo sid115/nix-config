@@ -1,7 +1,6 @@
 {
   inputs,
   outputs,
-  pkgs,
   ...
 }:
 
@@ -10,16 +9,14 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    # ./vfio.nix # FIXME
+    ./virtualisation.nix
 
     ../../users/sid
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.laptop
     inputs.core.nixosModules.hyprland
-    inputs.core.nixosModules.nvidia
     inputs.core.nixosModules.openssh
-    inputs.core.nixosModules.virtualization
 
     outputs.nixosModules.common
     outputs.nixosModules.docker
@@ -35,19 +32,6 @@
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
   ];
-
-  # virtualisation.docker.enable = true;
-  # users.extraGroups.docker.members = [ "sid" ];
-  # environment.systemPackages = [ pkgs.docker-compose ];
-
-  # https://github.com/quickemu-project/quickemu
-  boot.extraModprobeConfig = ''
-    options kvm_amd nested=1
-    options kvm ignore_msrs=1 report_ignored_msrs=0
-  '';
-  environment.systemPackages = [ pkgs.quickemu ];
-  users.extraGroups.libvirtd.members = [ "sid" ];
-  users.extraGroups.qemu-libvirtd.members = [ "sid" ];
 
   normalUsers = {
     sid = {

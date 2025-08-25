@@ -21,7 +21,7 @@
       wineWowPackages.waylandFull
       zotero
 
-      core.visual-paradigm-community
+      # core.visual-paradigm-community
     ]
     # tools
     ++ [
