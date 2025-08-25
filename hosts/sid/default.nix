@@ -57,12 +57,33 @@
       reverseProxy.enable = true;
       settings.base-url = "https://ntfy.sid.ovh";
       notifiers = {
-        monitor-domains = [
-          {
-            fqdn = "cloud.portuus.de";
+        monitor-domains =
+          let
+            subdomains = [
+              "ai"
+              "cloud"
+              "dav"
+              "finance"
+              "import.finance"
+              "git"
+              "grafana"
+              "hydra"
+              "ig"
+              "media"
+              "office"
+              "rss-bridge"
+              "search"
+              "share"
+              "tt-rss"
+              "vault"
+              "vde"
+              "videos"
+            ];
+          in
+          map (subdomain: {
+            fqdn = subdomain + ".portuus.de";
             topic = "portuus";
-          }
-        ];
+          }) subdomains;
       };
     };
   };
