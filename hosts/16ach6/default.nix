@@ -33,6 +33,12 @@
     "aarch64-linux"
   ];
 
+  virtualisation.waydroid.enable = true;
+  # sudo waydroid init
+  # sudo systemctl enable --now waydroid-container.service
+  # waydroid session start
+  # waydroid app launch com.foo.bar
+
   normalUsers = {
     sid = {
       extraGroups = [
