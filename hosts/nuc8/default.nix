@@ -12,7 +12,7 @@
     inputs.core.nixosModules.device.laptop # for Bluetooth
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.openssh
-    inputs.core.nixosModules.virtualization
+    inputs.core.nixosModules.virtualisation
 
     outputs.nixosModules.common
     outputs.nixosModules.docs

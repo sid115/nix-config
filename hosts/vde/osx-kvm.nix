@@ -3,7 +3,7 @@
 # https://github.com/kholia/OSX-KVM
 
 {
-  imports = [ inputs.core.nixosModules.virtualization ];
+  imports = [ inputs.core.nixosModules.virtualisation ];
 
   users.extraUsers.sid.extraGroups = [ "libvirtd" ];
 
