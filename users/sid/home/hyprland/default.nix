@@ -6,7 +6,7 @@
 
 {
   imports = [
-    # ./anyrun.nix
+    ./anyrun.nix
     # ./bitwarden.nix
     ./flatpak.nix
     ./fzf-open.nix
