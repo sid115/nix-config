@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/605cfcce80bf61ff47815aa8a8d3e275c0655312"; # https://hydra.nixos.org/build/301612793
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-24.05";

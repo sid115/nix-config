@@ -1,12 +1,13 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }:
 
 {
   imports = [
-    ./anyrun.nix
+    # ./anyrun.nix
     # ./bitwarden.nix
     ./flatpak.nix
     ./fzf-open.nix
@@ -32,6 +33,10 @@
 
     inputs.core.homeModules.virtualisation
   ];
+
+  # FIXME: Chromium crashes the system on startup
+  programs.chromium.enable = lib.mkForce false;
+  home.packages = [ pkgs.firefox ];
 
   dbus.packages = [
     pkgs.gnome-keyring

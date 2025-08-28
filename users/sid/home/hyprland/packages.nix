@@ -8,9 +8,7 @@
       drawio
       gimp
       inkscape
-      jellyfin-media-player
       jitsi-meet-electron
-      kicad
       ladybird
       mermaid-cli
       octaveFull
@@ -21,7 +19,9 @@
       wineWowPackages.waylandFull
       zotero
 
-      # core.visual-paradigm-community
+      # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
+      # kicad # FIXME
+      # core.visual-paradigm-community # FIXME
     ]
     # tools
     ++ [
@@ -31,7 +31,6 @@
       duden
       ftx-prog
       gf
-      gitingest
       gptfdisk
       gtkterm
       localsend
@@ -55,7 +54,8 @@
         ];
       }))
 
-      core.marker-pdf
+      # core.marker-pdf # FIXME
+      local.gitingest # TODO: PR Nixpkgs
       local.otp
       local.pdf2printable
       local.transcribe

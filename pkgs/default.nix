@@ -10,4 +10,5 @@
   transcribe = pkgs.callPackage ./transcribe { };
   udiskie-dmenu = pkgs.callPackage ./udiskie-dmenu { };
   yt2rss = pkgs.callPackage ./yt2rss { };
+  gitingest = pkgs.python3Packages.callPackage ./gitingest { };
 }
