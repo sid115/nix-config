@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DMENU="bemenu"
-OPTIONS="github"
+OPTIONS="github\nth-koeln"
 
 CHOICE=$(echo -e "$OPTIONS" | "$DMENU" -p "OTP:")
 
@@ -12,6 +12,9 @@ get_pass() {
 case "$CHOICE" in
   "github")
     get_pass "www/github.com"
+    ;;
+  "th-koeln")
+    get_pass "www/login.th-koeln.de"
     ;;
   *)
     echo "Error: Unknown option '$CHOICE'"

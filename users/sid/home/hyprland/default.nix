@@ -34,8 +34,7 @@
     inputs.core.homeModules.virtualisation
   ];
 
-  # FIXME: Chromium crashes the system on startup
-  programs.chromium.enable = lib.mkForce false;
+  # FIXME: Chromium crashes the system on startup. Use Firefox for now.
   home.packages = [ pkgs.firefox ];
 
   dbus.packages = [

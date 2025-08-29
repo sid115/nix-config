@@ -19,7 +19,6 @@
     inputs.core.nixosModules.matrix-synapse
     inputs.core.nixosModules.nginx
     inputs.core.nixosModules.ntfy-sh
-    inputs.core.nixosModules.open-webui
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.sops
 
@@ -35,7 +34,6 @@
       package = pkgs.core.baibot;
     };
     openssh.enable = true;
-    open-webui.enable = true;
     matrix-synapse = {
       enable = true;
       bridges = {
@@ -72,7 +70,7 @@
               "media"
               "office"
               "rss-bridge"
-              "search"
+              # "search" # FIXME: 429
               "share"
               "tt-rss"
               "vault"
