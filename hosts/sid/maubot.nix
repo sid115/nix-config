@@ -15,6 +15,10 @@ let
   matrix = config.services.matrix-synapse;
 in
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
+
   services.maubot = {
     enable = true;
     extraConfigFile = config.sops.templates."maubot/extra-config-file".path;

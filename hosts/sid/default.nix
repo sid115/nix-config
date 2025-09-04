@@ -47,6 +47,8 @@
         };
       };
     };
+    mautrix-whatsapp.settings.encryption.default = false;
+    mautrix-signal.settings.encryption.default = false;
     nginx = {
       enable = true;
     };
