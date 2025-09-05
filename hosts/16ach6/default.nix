@@ -9,7 +9,9 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
+    ./secrets
     ./virtualisation.nix
+    ./wireguard.nix
 
     ../../users/sid
 

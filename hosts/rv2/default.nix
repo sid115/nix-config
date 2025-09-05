@@ -5,7 +5,7 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    ./wireguard.nix
+    ./secrets
 
     ../../users/sid
 
@@ -13,7 +13,6 @@
     inputs.core.nixosModules.device.laptop
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.openssh
-    inputs.core.nixosModules.sops
     inputs.core.nixosModules.virtualisation
 
     outputs.nixosModules.common
