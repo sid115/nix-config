@@ -27,6 +27,18 @@
       port = 28677;
       user = "admin";
     };
+    vpn = {
+      host = "v vpn";
+      hostname = "91.99.172.127";
+      port = 2299;
+      user = "sid";
+    };
+    zfs = {
+      host = "z zfs";
+      hostname = "91.98.86.229";
+      port = 22;
+      user = "sid";
+    };
   };
 
   # setup: sudo mkdir -p /mnt/sshfs && sudo chown sid:sid /mnt/sshfs
