@@ -8,7 +8,7 @@
 {
   imports = [
     # ./anyrun.nix
-    # ./bitwarden.nix
+    ./bitwarden.nix
     ./flatpak.nix
     ./fzf-open.nix
     ./gemini-cli.nix
