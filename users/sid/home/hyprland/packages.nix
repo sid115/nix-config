@@ -19,9 +19,10 @@
       wineWowPackages.waylandFull
       zotero
 
+      core.visual-paradigm-community
+
       # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
       # kicad # FIXME
-      # core.visual-paradigm-community # FIXME
     ]
     # tools
     ++ [

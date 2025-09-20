@@ -11,6 +11,7 @@
     ./packages.nix
     ./secrets
     ./virtualisation.nix
+    ./winapps.nix
     ./wireguard.nix
 
     ../../users/sid
