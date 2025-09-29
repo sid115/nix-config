@@ -422,6 +422,27 @@
         "type": "github"
       }
     },
+    "gen-dmc": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759167416,
+        "narHash": "sha256-FOv4Vsng7OUC715tonYRGGY4JhcL3fticvC1YjvGzAI=",
+        "owner": "kmein",
+        "repo": "gen-dmc",
+        "rev": "5a152a7b311cc77de761740bfbb211293d9621d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kmein",
+        "ref": "pull/3/head",
+        "repo": "gen-dmc",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1008,6 +1029,7 @@
         "anyrun": "anyrun",
         "core": "core",
         "deploy-rs": "deploy-rs",
+        "gen-dmc": "gen-dmc",
         "home-manager": "home-manager_2",
         "kidex": "kidex",
         "nix-flatpak": "nix-flatpak",

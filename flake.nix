@@ -45,6 +45,9 @@
 
     winapps.url = "github:winapps-org/winapps";
     winapps.inputs.nixpkgs.follows = "nixpkgs";
+
+    gen-dmc.url = "github:kmein/gen-dmc/pull/3/head";
+    gen-dmc.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

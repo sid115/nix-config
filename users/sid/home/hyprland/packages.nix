@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home.packages =
@@ -20,6 +20,7 @@
       zotero
 
       core.visual-paradigm-community
+      inputs.gen-dmc.packages.${system}.gen-dmc
 
       # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
       # kicad # FIXME
