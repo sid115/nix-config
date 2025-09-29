@@ -12,7 +12,7 @@
     ./secrets
     ./virtualisation.nix
     ./winapps.nix
-    ./wireguard.nix
+    # ./wireguard.nix
 
     ../../users/sid
 
