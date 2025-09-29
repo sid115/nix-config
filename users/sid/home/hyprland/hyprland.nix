@@ -9,13 +9,14 @@
     settings = {
       bind =
         let
-          flatpak = "${pkgs.flatpak}/bin/flatpak";
+          flatpakRun = "${pkgs.flatpak}/bin/flatpak --user run";
         in
         [
           "$mod,       g, exec, gimp"
           "$mod,       s, exec, kitty -T spotify -e spotify_player"
           "$mod,       v, exec, virt-manager"
-          "$mod,       z, exec, ${flatpak} run us.zoom.Zoom"
+          "$mod,       z, exec, ${flatpakRun} us.zoom.Zoom"
+          "$mod CTRL,  m, exec, ${flatpakRun} org.mypaint.MyPaint"
           "$mod CTRL,  o, exec, obs"
           "$mod CTRL,  p, exec, otp"
           "$mod SHIFT, a, exec, chromium --app=https://ai.sid.ovh"

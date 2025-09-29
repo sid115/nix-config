@@ -16,6 +16,10 @@
     };
     packages = [
       {
+        appId = "org.mypaint.MyPaint";
+        origin = "flathub";
+      }
+      {
         appId = "us.zoom.Zoom";
         origin = "flathub";
       }
