@@ -10,7 +10,7 @@
   };
 
   networking.firewall.extraCommands = ''
-    iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+    iptables -t nat -A POSTROUTING -o wlp1s0 -j MASQUERADE
     iptables -A INPUT -i enp2s0 -j ACCEPT
   '';
 

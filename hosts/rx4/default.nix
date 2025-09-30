@@ -9,7 +9,7 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    # ./router.nix
+    ./router.nix
 
     ../../users/sid
 
