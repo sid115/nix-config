@@ -128,6 +128,12 @@
           };
           modules = [ ./hosts/rv2 ];
         };
+        rx4 = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./hosts/rx4 ];
+        };
         vde = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
