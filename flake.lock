@@ -138,11 +138,11 @@
         "nixpkgs-zoom": "nixpkgs-zoom"
       },
       "locked": {
-        "lastModified": 1758642309,
-        "narHash": "sha256-NcwRYlDeUo1P5Rp8Ug/dDA+2eB/dDmekLkiywBSjCh0=",
+        "lastModified": 1759736057,
+        "narHash": "sha256-hg+0eWKoBQ+U9JEonSCcSzQ2ZKzTcPM7XBq41SIMLkY=",
         "owner": "sid115",
         "repo": "nix-core",
-        "rev": "79c4cd0f7ec3449ae52fe6891ddf7bb23998d4b8",
+        "rev": "172e3448b84d3708da827bc6b5825caeda116c24",
         "type": "github"
       },
       "original": {

@@ -6,6 +6,7 @@
     [
       angryipscanner
       audacity
+      discord
       drawio
       gimp
       inkscape
@@ -20,9 +21,9 @@
       wineWowPackages.waylandFull
       zotero
 
-      core.visual-paradigm-community
       inputs.gen-dmc.packages.${system}.gen-dmc
 
+      # core.visual-paradigm-community # FIXME
       # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
       # kicad # FIXME
     ]

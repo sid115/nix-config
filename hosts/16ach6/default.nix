@@ -19,6 +19,7 @@
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.laptop
     inputs.core.nixosModules.hyprland
+    inputs.core.nixosModules.i2pd
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
@@ -29,6 +30,7 @@
   networking.hostName = "16ach6";
 
   services = {
+    i2pd.enable = true;
     openssh.enable = true;
   };
 
