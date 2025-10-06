@@ -14,9 +14,10 @@
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.virtualisation
+    inputs.core.nixosModules.windows-oci
 
     outputs.nixosModules.common
-    outputs.nixosModules.docker
+    # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
   ];
 
@@ -101,6 +102,10 @@
 
   services = {
     openssh.enable = true;
+    windows-oci = {
+      enable = true;
+      sharedVolume = "/home/sid/pub";
+    };
   };
 
   boot.binfmt.emulatedSystems = [

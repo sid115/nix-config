@@ -11,8 +11,8 @@
     ./packages.nix
     ./secrets
     ./virtualisation.nix
-    ./winapps.nix
-    # ./wireguard.nix
+    # ./winapps.nix # trying windows-oci for now
+    # ./wireguard.nix # TODO: use NM for client config
 
     ../../users/sid
 
@@ -21,9 +21,10 @@
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.i2pd
     inputs.core.nixosModules.openssh
+    inputs.core.nixosModules.windows-oci
 
     outputs.nixosModules.common
-    outputs.nixosModules.docker
+    # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
   ];
 
@@ -32,6 +33,10 @@
   services = {
     i2pd.enable = true;
     openssh.enable = true;
+    windows-oci = {
+      enable = true;
+      sharedVolume = "/home/sid/pub";
+    };
   };
 
   boot.binfmt.emulatedSystems = [
