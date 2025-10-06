@@ -18,7 +18,6 @@
       remmina
       spotify
       texliveFull
-      wineWowPackages.waylandFull
       zotero
 
       inputs.gen-dmc.packages.${system}.gen-dmc
