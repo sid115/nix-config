@@ -15,6 +15,12 @@
       port = 2299;
       user = "sid";
     };
+    rx4 = {
+      host = "r rx4 *.rx4.lan";
+      hostname = "192.168.1.229"; # FIXME: DNS for rx4.lan
+      port = 2299;
+      user = "sid";
+    };
     sid = {
       host = "s sid *.sid.ovh";
       hostname = "sid.ovh";
