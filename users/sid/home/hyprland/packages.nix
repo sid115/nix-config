@@ -22,7 +22,7 @@
       xournalpp
       zotero
 
-      inputs.gen-dmc.packages.${system}.gen-dmc
+      # inputs.gen-dmc.packages.${system}.gen-dmc
 
       # core.visual-paradigm-community # FIXME
       # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
@@ -32,7 +32,6 @@
     ++ [
       aichat
       compose2nix
-      cutecom
       duden
       ftx-prog
       gf

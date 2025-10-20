@@ -1,7 +1,9 @@
 {
   programs.git = {
     enable = true;
-    userName = "sid";
-    userEmail = "sid@portuus.de";
+    settings.user = {
+      name = "sid";
+      email = "sid@portuus.de";
+    };
   };
 }
