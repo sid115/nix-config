@@ -26,5 +26,8 @@
     ];
   };
 
-  home.packages = [ pkgs.flatpak ];
+  home.packages = with pkgs; [
+    flatpak
+    flatpak-builder
+  ];
 }

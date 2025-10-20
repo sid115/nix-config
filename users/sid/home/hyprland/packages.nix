@@ -6,6 +6,7 @@
     [
       angryipscanner
       audacity
+      autopsy
       discord
       drawio
       gimp
@@ -18,6 +19,7 @@
       remmina
       spotify
       texliveFull
+      xournalpp
       zotero
 
       inputs.gen-dmc.packages.${system}.gen-dmc

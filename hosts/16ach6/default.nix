@@ -26,6 +26,7 @@
     outputs.nixosModules.common
     # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
+    outputs.nixosModules.wine
   ];
 
   networking.hostName = "16ach6";

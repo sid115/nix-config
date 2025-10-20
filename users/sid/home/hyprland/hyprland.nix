@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [ inputs.core.homeModules.hyprland ];
@@ -10,12 +15,14 @@
       bind =
         let
           flatpakRun = "${pkgs.flatpak}/bin/flatpak --user run";
+          wineRun = "wine ${config.home.homeDirectory}/.wine/drive_c";
         in
         [
           "$mod,       g, exec, gimp"
           "$mod,       s, exec, kitty -T spotify -e spotify_player"
           "$mod,       v, exec, virt-manager"
           "$mod,       z, exec, ${flatpakRun} us.zoom.Zoom"
+          "$mod CTRL,  i, exec, ${wineRun}/Program\\ Files/AccessData/FTK\\ Imager/FTK\\ Imager.exe"
           "$mod CTRL,  m, exec, ${flatpakRun} org.mypaint.MyPaint"
           "$mod CTRL,  o, exec, obs"
           "$mod CTRL,  p, exec, otp"

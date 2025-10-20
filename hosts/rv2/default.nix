@@ -19,6 +19,7 @@
     outputs.nixosModules.common
     # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
+    outputs.nixosModules.wine
   ];
 
   networking.hostName = "rv2";
@@ -103,7 +104,7 @@
   services = {
     openssh.enable = true;
     windows-oci = {
-      enable = true;
+      # enable = true;
       sharedVolume = "/home/sid/pub";
     };
   };
