@@ -18,6 +18,7 @@
       pdfarranger
       remmina
       spotify
+      teams-for-linux
       texliveFull
       xournalpp
       zotero

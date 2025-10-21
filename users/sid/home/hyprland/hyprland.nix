@@ -20,6 +20,7 @@
         [
           "$mod,       g, exec, gimp"
           "$mod,       s, exec, kitty -T spotify -e spotify_player"
+          "$mod,       t, exec, teams-for-linux"
           "$mod,       v, exec, virt-manager"
           "$mod,       z, exec, ${flatpakRun} us.zoom.Zoom"
           "$mod CTRL,  i, exec, ${wineRun}/Program\\ Files/AccessData/FTK\\ Imager/FTK\\ Imager.exe"

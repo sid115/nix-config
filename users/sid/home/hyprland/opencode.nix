@@ -5,7 +5,6 @@
     enable = true;
     settings = {
       "$schema" = "https://opencode.ai/config.json";
-      theme = "opencode";
       provider = {
         openrouter = {
           name = "OpenRouter";
