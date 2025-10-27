@@ -23,7 +23,7 @@
       xournalpp
       zotero
 
-      # inputs.gen-dmc.packages.${system}.gen-dmc
+      # inputs.gen-dmc.packages.${pkgs.system}.gen-dmc
 
       # core.visual-paradigm-community # FIXME
       # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
@@ -54,6 +54,8 @@
       xxd
       yt-dlp
 
+      inputs.multios-usb.packages.${pkgs.system}.default
+
       (instaloader.overridePythonAttrs (oldAttrs: {
         propagatedBuildInputs = (oldAttrs.propagatedBuildInputs or [ ]) ++ [
           python3Packages.browser-cookie3
@@ -76,13 +78,7 @@
     # android
     ++ [
       adbfs-rootless
-      android-studio
-      android-studio-tools
       android-tools
       scrcpy
     ];
-
-  nixpkgs.config = {
-    android_sdk.accept_license = true; # for android-studio
-  };
 }

@@ -48,6 +48,9 @@
 
     gen-dmc.url = "github:kmein/gen-dmc/pull/3/head";
     gen-dmc.inputs.nixpkgs.follows = "nixpkgs";
+
+    multios-usb.url = "github:Mexit/MultiOS-USB";
+    multios-usb.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
