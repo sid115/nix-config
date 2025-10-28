@@ -62,12 +62,14 @@
         ];
       }))
 
-      # core.marker-pdf # FIXME
       local.gitingest # TODO: PR Nixpkgs
       local.otp
       local.pdf2printable
       local.transcribe
       local.yt2rss
+
+      core.bulk-rename
+      # core.marker-pdf # FIXME
     ]
     # reverse engineering
     # ++ [
