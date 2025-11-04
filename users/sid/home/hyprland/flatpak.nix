@@ -20,10 +20,10 @@
         origin = "flathub";
       }
       # FIXME: does not start. installed `chat.commet.commetapp.flatpak` manually
-      # {
-      #   appId = "im.riot.Riot";
-      #   origin = "flathub";
-      # }
+      {
+        appId = "im.riot.Riot";
+        origin = "flathub";
+      }
       {
         appId = "us.zoom.Zoom";
         origin = "flathub";

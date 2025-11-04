@@ -6,7 +6,6 @@
     [
       angryipscanner
       audacity
-      autopsy
       discord
       drawio
       gimp
@@ -25,6 +24,7 @@
 
       # inputs.gen-dmc.packages.${pkgs.system}.gen-dmc
 
+      # autopsy # gradle-7.6.6 is marked as insecure
       # core.visual-paradigm-community # FIXME
       # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
       # kicad # FIXME
