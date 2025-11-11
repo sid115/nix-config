@@ -8,8 +8,5 @@ in
       "--login-server=${login-server}"
       "--ssh"
     ];
-    extraDaemonFlags = [
-      "--login-server=${login-server}"
-    ];
   };
 }
