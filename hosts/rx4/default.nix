@@ -17,7 +17,7 @@
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
-    outputs.nixosModules.monero
+    # outputs.nixosModules.monero
   ];
 
   networking.hostName = "rx4";
@@ -25,15 +25,15 @@
 
   services = {
     openssh.enable = true;
-    monero = {
-      enable = true;
-      mining.address = "";
-    };
-    xmrig.settings = {
-      cpu = {
-        max-threads-hint = 4;
-      };
-    };
+    # monero = {
+    #   enable = true;
+    #   mining.address = "";
+    # };
+    # xmrig.settings = {
+    #   cpu = {
+    #     max-threads-hint = 4;
+    #   };
+    # };
   };
 
   system.stateVersion = "25.11";
