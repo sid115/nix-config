@@ -1,5 +1,5 @@
 let
-  login-server = "https://headscale.portuus.de";
+  login-server = "https://hs.sid.ovh";
 in
 {
   services.tailscale = {
