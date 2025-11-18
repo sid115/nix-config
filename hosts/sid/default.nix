@@ -12,6 +12,7 @@
     ./maubot.nix
     ./packages.nix
     ./services.nix
+    ./uptime-kuma.nix
 
     ../../users/sid
 
