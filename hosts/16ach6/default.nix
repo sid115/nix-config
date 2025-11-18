@@ -37,6 +37,7 @@
     openssh.enable = true;
     tailscale = {
       enable = true;
+      enableSSH = true;
       loginServer = "https://hs.sid.ovh";
     };
     windows-oci = {
