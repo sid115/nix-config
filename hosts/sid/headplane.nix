@@ -1,3 +1,5 @@
+# FIXME: 502
+
 {
   inputs,
   config,
@@ -37,7 +39,6 @@ in
     enableACME = true;
     locations."/" = {
       proxyPass = with cfg.settings.server; "http://${host}:${toString port}";
-      proxyWebsockets = true;
     };
   };
 }
