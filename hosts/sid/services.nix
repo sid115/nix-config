@@ -12,6 +12,7 @@
     inputs.core.nixosModules.nginx
     inputs.core.nixosModules.ntfy-sh
     inputs.core.nixosModules.openssh
+    inputs.core.nixosModules.uptime-kuma
   ];
 
   services.baibot = {
@@ -76,4 +77,9 @@
   };
 
   services.openssh.enable = true;
+
+  services.uptime-kuma = {
+    enable = true;
+    subdomain = "kuma";
+  };
 }
