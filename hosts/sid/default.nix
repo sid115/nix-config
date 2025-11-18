@@ -8,6 +8,7 @@
   imports = [
     ./boot.nix
     ./hardware.nix
+    ./headplane.nix
     ./maubot.nix
     ./packages.nix
     ./services.nix

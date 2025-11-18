@@ -51,6 +51,9 @@
 
     multios-usb.url = "github:Mexit/MultiOS-USB";
     multios-usb.inputs.nixpkgs.follows = "nixpkgs";
+
+    headplane.url = "github:tale/headplane";
+    headplane.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -122,6 +125,10 @@
         sid = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
+            # pkgs = import nixpkgs {
+            #   system = "x86_64-linux";
+            #   overlays = [ inputs.headplane.overlays.default ];
+            # };
           };
           modules = [ ./hosts/sid ];
         };
