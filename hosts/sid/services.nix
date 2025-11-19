@@ -7,17 +7,25 @@
 {
   imports = [
     inputs.core.nixosModules.baibot
+    inputs.core.nixosModules.headplane
     inputs.core.nixosModules.headscale
     inputs.core.nixosModules.matrix-synapse
     inputs.core.nixosModules.nginx
     inputs.core.nixosModules.ntfy-sh
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.uptime-kuma
+
+    ./maubot.nix
   ];
 
   services.baibot = {
     enable = true;
     package = pkgs.core.baibot;
+  };
+
+  services.headplane = {
+    enable = true;
+    subdomain = "hp";
   };
 
   services.headscale = {
