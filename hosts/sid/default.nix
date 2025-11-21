@@ -10,11 +10,11 @@
     ./hardware.nix
     ./packages.nix
     ./services.nix
+    ./secrets
 
     ../../users/sid
 
     inputs.core.nixosModules.common
-    inputs.core.nixosModules.sops
 
     outputs.nixosModules.common
   ];

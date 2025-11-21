@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   pkgs,
   ...
 }:
@@ -14,6 +15,7 @@
     inputs.core.nixosModules.ntfy-sh
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.uptime-kuma
+    inputs.core.nixosModules.uptime-kuma-agent
 
     ./maubot.nix
   ];
@@ -89,5 +91,23 @@
   services.uptime-kuma = {
     enable = true;
     subdomain = "kuma";
+  };
+
+  services.uptime-kuma-agent = {
+    enable = true;
+    monitors = {
+      nginx = {
+        secretFile = config.sops.secrets."uptime-kuma-agent/nginx".path;
+      };
+      matrix-synapse = {
+        secretFile = config.sops.secrets."uptime-kuma-agent/matrix-synapse".path;
+      };
+      mautrix-whatsapp = {
+        secretFile = config.sops.secrets."uptime-kuma-agent/mautrix-whatsapp".path;
+      };
+      mautrix-signal = {
+        secretFile = config.sops.secrets."uptime-kuma-agent/mautrix-signal".path;
+      };
+    };
   };
 }
