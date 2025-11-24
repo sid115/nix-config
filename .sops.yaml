@@ -2,7 +2,7 @@ keys:
   - &host_16ach6 age1km907lx69fwvmwgt7rspkuyxtkdrhr7r7t0mw20e5rymsu364exs3rl28q
   - &host_sid age1ytfze9tv5l80ujqfd66xp97w2u0lq8jrx45ulf0szey8ny0t837sdktdzf
   - &host_rv2 age1j6s2ec3ltm9004fhvmd7xqq0zna2fr4m8kw4f235r9k0hfryjctq050vs2
-  # - &host_rx4
+  - &host_rx4 age10mkn2jgwpue7gy92vwjqp4j4j9qyh5enrzw8j82v872yflawvvkqhqde34
   - &user_sid age19yeqvv28fgrtk6jsh3xyaf0lch86kna6rcz4dwe962yyyyevu30sx474xy
 creation_rules:
   - path_regex: hosts/16ach6/secrets/secrets.yaml$
@@ -24,7 +24,7 @@ creation_rules:
     key_groups:
       - age:
           - *user_sid
-          # - *host_rx4
+          - *host_rx4
   - path_regex: users/sid/home/secrets/secrets.yaml$
     key_groups:
       - age:
