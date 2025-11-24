@@ -9,12 +9,13 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    ./router.nix
+    # ./secrets
 
     ../../users/sid
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.openssh
+    # inputs.core.nixosModules.tailscale
 
     outputs.nixosModules.common
     # outputs.nixosModules.monero
@@ -25,6 +26,11 @@
 
   services = {
     openssh.enable = true;
+    # tailscale = {
+    #   enable = true;
+    #   enableSSH = true;
+    #   loginServer = "https://hs.sid.ovh";
+    # };
     # monero = {
     #   enable = true;
     #   mining.address = "";
