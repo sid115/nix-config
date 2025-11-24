@@ -7,10 +7,11 @@
 {
   imports = [
     ./boot.nix
+    ./element-call.nix
     ./hardware.nix
     ./packages.nix
-    ./services.nix
     ./secrets
+    ./services.nix
 
     ../../users/sid
 
