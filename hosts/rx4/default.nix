@@ -15,10 +15,10 @@
 
     inputs.core.nixosModules.common
     inputs.core.nixosModules.openssh
-    inputs.core.nixosModules.tailscale
 
     outputs.nixosModules.common
     # outputs.nixosModules.monero
+    outputs.nixosModules.tailscale
   ];
 
   networking.hostName = "rx4";
@@ -26,11 +26,6 @@
 
   services = {
     openssh.enable = true;
-    tailscale = {
-      enable = true;
-      enableSSH = true;
-      loginServer = "https://hs.sid.ovh";
-    };
     # monero = {
     #   enable = true;
     #   mining.address = "";

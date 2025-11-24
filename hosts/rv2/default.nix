@@ -13,13 +13,13 @@
     inputs.core.nixosModules.device.laptop
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.openssh
-    inputs.core.nixosModules.tailscale
     inputs.core.nixosModules.virtualisation
     inputs.core.nixosModules.windows-oci
 
     outputs.nixosModules.common
     # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
+    outputs.nixosModules.tailscale
     outputs.nixosModules.wine
   ];
 
@@ -33,11 +33,6 @@
 
   services = {
     openssh.enable = true;
-    tailscale = {
-      enable = true;
-      enableSSH = true;
-      loginServer = "https://hs.sid.ovh";
-    };
     windows-oci = {
       # enable = true;
       sharedVolume = "/home/sid/pub";
