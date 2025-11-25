@@ -1,0 +1,7 @@
+{
+  "buildHost": "p",
+  "hosts": [
+    "sid",
+    "rx4"
+  ]
+}

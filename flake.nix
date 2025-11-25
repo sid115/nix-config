@@ -12,9 +12,6 @@
     # core.url = "git+file:///home/sid/src/nix-core";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
-    deploy-rs.url = "github:serokell/deploy-rs";
-    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
@@ -71,27 +68,22 @@
       ];
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
-      deployPkgs = forAllSystems (
+    in
+    {
+      apps = forAllSystems (
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
-        import nixpkgs {
-          inherit system;
-          overlays = [
-            inputs.deploy-rs.overlay.default
-            (self: super: {
-              deploy-rs = {
-                inherit (pkgs) deploy-rs;
-                lib = super.deploy-rs.lib;
-              };
-            })
-          ];
+        {
+          deploy = {
+            type = "app";
+            program = pkgs.lib.getExe (pkgs.callPackage ./apps/deploy { });
+            meta.description = "Deploy NixOS configurations in this flake.";
+          };
         }
       );
-    in
-    {
+
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
       overlays = import ./overlays { inherit inputs; };
@@ -111,40 +103,42 @@
 
       nixosConfigurations = {
         "16ach6" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
           };
           modules = [ ./hosts/16ach6 ];
         };
         nuc8 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
           };
           modules = [ ./hosts/nuc8 ];
         };
         sid = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
-            # pkgs = import nixpkgs {
-            #   system = "x86_64-linux";
-            #   overlays = [ inputs.headplane.overlays.default ];
-            # };
           };
           modules = [ ./hosts/sid ];
         };
         rv2 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
           };
           modules = [ ./hosts/rv2 ];
         };
         rx4 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
           };
           modules = [ ./hosts/rx4 ];
         };
         vde = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
           };
@@ -185,13 +179,6 @@
         };
       };
 
-      deploy.nodes = {
-        sid.profiles.system = {
-          user = "sid";
-          path = deployPkgs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.sid;
-        };
-      };
-
       checks = forAllSystems (
         system:
         let
@@ -206,7 +193,6 @@
             };
           };
           build-packages = pkgs.linkFarm "flake-packages-${system}" flakePkgs;
-          # deploy-checks = inputs.deploy-rs.lib.${system}.deployChecks self.deploy;
         }
       );
     };
