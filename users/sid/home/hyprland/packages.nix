@@ -19,6 +19,7 @@
       spotify
       teams-for-linux
       texliveFull
+      weechat
       xournalpp
       zotero
 

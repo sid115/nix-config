@@ -8,7 +8,9 @@
   imports = [
     ./boot.nix
     ./hardware.nix
+    ./open-webui-oci.nix
     ./packages.nix
+    ./print-server.nix
     ./secrets
 
     ../../users/sid

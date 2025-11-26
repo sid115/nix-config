@@ -32,6 +32,21 @@
   ];
 
   services = {
+    # FIXME:
+    # connect in weechat:
+    # /server add local localhost/6667
+    # /set irc.server.local.password "abc"
+    # /set irc.server.local.tls off
+    # Access denied: Bad password?
+    ngircd = {
+      enable = true;
+      config = ''
+        [Global]
+        Name = irc.local
+        Info = Minimal ngIRCd Server
+        Password = yourmom69
+      '';
+    };
     openssh.enable = true;
     windows-oci = {
       # enable = true;

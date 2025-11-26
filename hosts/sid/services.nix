@@ -1,6 +1,8 @@
 {
   inputs,
+  outputs,
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -16,6 +18,8 @@
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.uptime-kuma
     inputs.core.nixosModules.uptime-kuma-agent
+
+    outputs.nixosModules.tailscale
 
     ./maubot.nix
   ];
@@ -50,7 +54,47 @@
     };
   };
 
-  services.nginx.enable = true;
+  services.nginx = {
+    enable = true;
+    virtualHosts."ai.sid.ovh" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/.well-known/acme-challenge" = {
+        extraConfig = ''
+          default_type "text/plain";
+        '';
+      };
+      locations."/" = {
+        proxyPass = "http://100.64.0.5:8081";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
+    virtualHosts."print.sid.ovh" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/.well-known/acme-challenge" = {
+        extraConfig = ''
+          default_type "text/plain";
+        '';
+      };
+      locations."/" = {
+        proxyPass = "http://100.64.0.5:631";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
+  };
 
   services.ntfy-sh = {
     enable = true;
@@ -87,6 +131,10 @@
   };
 
   services.openssh.enable = true;
+
+  # services.tailscale.loginServer = lib.mkForce (
+  #   with config.services.headscale; "http://${address}.${toString port}"
+  # );
 
   services.uptime-kuma = {
     enable = true;
