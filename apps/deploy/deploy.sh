@@ -5,7 +5,6 @@ FLAKE_URI="."
 CONFIG_FILE="./deploy.json"
 ACTION="switch"
 DO_BUILD=true
-USE_SUDO=true
 
 # colors
 GREEN='\033[0;32m'
@@ -29,7 +28,6 @@ help() {
     echo "  -f, --flake URI        URI of the flake to build (default: $FLAKE_URI)"
     echo "  -c, --config FILE      Path to the JSON deployment config (default: $CONFIG_FILE)"
     echo "  --skip-build           Skip the explicit build-only step before deployment."
-    echo "  --no-sudo              Do not pass to sudo related flags nixos-rebuild."
     echo "  -h, --help             Show this help message."
     echo ""
 }
@@ -60,10 +58,6 @@ while [[ $# -gt 0 ]]; do
             DO_BUILD=false
             shift
             ;;
-        --no-sudo)
-            USE_SUDO=false
-            shift
-            ;;
         -h|--help|help)
             help
             exit 0
@@ -87,11 +81,6 @@ mapfile -t HOSTS < <(jq -r '.hosts[]' "$CONFIG_FILE")
 
 if [ ${#HOSTS[@]} -eq 0 ]; then
     error "No hosts defined in $CONFIG_FILE"
-fi
-
-SUDO_FLAGS=""
-if [ "$USE_SUDO" = true ]; then
-    SUDO_FLAGS="--sudo --ask-sudo-password"
 fi
 
 echo -e "Action:      ${GREEN}${ACTION}${NC}"
@@ -121,10 +110,11 @@ for host in "${HOSTS[@]}"; do
     echo -e "Deploying to: ${GREEN}${host}${NC}"
     
     if ! nixos-rebuild "$ACTION" \
+        --sudo \
         --flake "${FLAKE_URI}#${host}" \
         --build-host "$BUILD_HOST" \
         --target-host "${host}" \
-        "$SUDO_FLAGS"; then
+        --ask-sudo-password; then
         error "Failed to verify/activate on ${host}. Aborting..."
     fi
     echo -e "${GREEN}Success: ${host} updated.${NC}"
