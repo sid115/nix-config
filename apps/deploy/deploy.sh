@@ -94,11 +94,10 @@ if [ "$DO_BUILD" = true ]; then
     for host in "${HOSTS[@]}"; do
         echo -e "------------------------------------------------"
         echo -e "Building config for: ${GREEN}${host}${NC}"
-        if ! nixos-rebuild build \
-            --flake "${FLAKE_URI}#${host}" \
-            --build-host "$BUILD_HOST"; then
-            error "Build failed for host '${host}'. Aborting..."
-        fi
+
+        CMD="nixos-rebuild build --flake ${FLAKE_URI}#${host}"
+        [ "$BUILD_HOST" != "localhost" ] && CMD="$CMD --build-host $BUILD_HOST"
+        $CMD || error "Build failed for host '${host}'. Aborting..."
     done
 else
     echo -e "\n${BLUE}>>> Skipping explicit build step...${NC}"
@@ -108,15 +107,12 @@ echo -e "\n${BLUE}>>> Deploying to targets...${NC}"
 for host in "${HOSTS[@]}"; do
     echo -e "------------------------------------------------"
     echo -e "Deploying to: ${GREEN}${host}${NC}"
-    
-    if ! nixos-rebuild "$ACTION" \
-        --sudo \
-        --flake "${FLAKE_URI}#${host}" \
-        --build-host "$BUILD_HOST" \
-        --target-host "${host}" \
-        --ask-sudo-password; then
-        error "Failed to verify/activate on ${host}. Aborting..."
-    fi
+
+    CMD="nixos-rebuild $ACTION --sudo --flake ${FLAKE_URI}#${host}"
+    [ "$BUILD_HOST" != "localhost" ] && CMD="$CMD --build-host $BUILD_HOST"
+    CMD="$CMD --target-host ${host} --ask-sudo-password"
+    $CMD || error "Failed to verify/activate on ${host}. Aborting..."
+
     echo -e "${GREEN}Success: ${host} updated.${NC}"
 done
 
