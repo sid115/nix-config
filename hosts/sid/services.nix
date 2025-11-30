@@ -72,6 +72,13 @@
         proxyWebsockets = true;
       };
     };
+    virtualHosts."rss.sid.ovh" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://100.64.0.5:8085";
+      };
+    };
   };
 
   services.ntfy-sh = {

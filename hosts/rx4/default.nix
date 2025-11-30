@@ -16,6 +16,7 @@
     ../../users/sid
 
     inputs.core.nixosModules.common
+    inputs.core.nixosModules.miniflux
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
@@ -27,6 +28,12 @@
   networking.domain = "rx4.lan";
 
   services = {
+    miniflux = {
+      enable = true;
+      config = {
+        ADMIN_USERNAME = "sid";
+      };
+    };
     openssh.enable = true;
     # monero = {
     #   enable = true;
