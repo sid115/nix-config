@@ -59,39 +59,17 @@
     virtualHosts."ai.sid.ovh" = {
       enableACME = true;
       forceSSL = true;
-      locations."/.well-known/acme-challenge" = {
-        extraConfig = ''
-          default_type "text/plain";
-        '';
-      };
       locations."/" = {
-        proxyPass = "http://100.64.0.5:8081";
+        proxyPass = "http://100.64.0.5:8080";
         proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-        '';
       };
     };
     virtualHosts."print.sid.ovh" = {
       enableACME = true;
       forceSSL = true;
-      locations."/.well-known/acme-challenge" = {
-        extraConfig = ''
-          default_type "text/plain";
-        '';
-      };
       locations."/" = {
         proxyPass = "http://100.64.0.5:631";
         proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-        '';
       };
     };
   };

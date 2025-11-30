@@ -5,14 +5,13 @@
 
   services.open-webui-oci = {
     enable = true;
-    port = 8081;
     environment = {
       AUDIO_STT_ENGINE = "openai";
       AUDIO_TTS_ENGINE = "openai";
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 8081 ];
+  networking.firewall.allowedTCPPorts = [ config.services.open-webui-oci.port ];
 
   sops = {
     secrets."open-webui-oci/stt-api-key" = { };
