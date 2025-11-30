@@ -7,7 +7,6 @@
 {
   imports = [
     ./boot.nix
-    ./element-call.nix
     ./hardware.nix
     ./packages.nix
     ./secrets

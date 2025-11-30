@@ -37,6 +37,7 @@
     #     max-threads-hint = 4;
     #   };
     # };
+    transmission.enable = true;
   };
 
   system.stateVersion = "25.11";
