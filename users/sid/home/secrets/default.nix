@@ -15,6 +15,6 @@
     nextcloud = { };
     openrouter-api-key = { };
     spotify = { };
-    tt-rss = { };
+    miniflux = { };
   };
 }

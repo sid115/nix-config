@@ -93,19 +93,18 @@
             "cloud"
             "dav"
             "finance"
-            "import.finance"
             "git"
-            "grafana"
             "hydra"
+            "import.finance"
             "media"
-            "office"
+            "miniflux"
             "rss-bridge"
-            # "search" # FIXME: 429
             "share"
-            "tt-rss"
             "vault"
             "vde"
             "videos"
+
+            # "search" # FIXME: 429
           ];
         in
         map (subdomain: {

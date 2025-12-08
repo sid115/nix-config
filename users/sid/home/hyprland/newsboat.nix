@@ -3,10 +3,10 @@
 {
   programs.newsboat = {
     extraConfig = ''
-      urls-source "ttrss"
-      ttrss-url "https://tt-rss.portuus.de/"
-      ttrss-login "sid"
-      ttrss-passwordfile "${config.sops.secrets.tt-rss.path}"
+      urls-source "miniflux"
+      miniflux-url "https://miniflux.portuus.de/"
+      miniflux-login "sid"
+      miniflux-passwordfile "${config.sops.secrets.miniflux.path}"
     '';
   };
 }

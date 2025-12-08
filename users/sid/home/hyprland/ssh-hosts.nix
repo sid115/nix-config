@@ -15,6 +15,12 @@
       port = 2299;
       user = "sid";
     };
+    sid = {
+      host = "s sid *.sid.ovh";
+      hostname = "sid.ovh";
+      port = 2299;
+      user = "sid";
+    };
   };
 
   # setup: sudo mkdir -p /mnt/sshfs && sudo chown sid:sid /mnt/sshfs
