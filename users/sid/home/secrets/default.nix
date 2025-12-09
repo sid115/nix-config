@@ -13,7 +13,6 @@
     gemini-api-key = { };
     github-token = { };
     nextcloud = { };
-    openrouter-api-key = { };
     spotify = { };
     miniflux = { };
   };
