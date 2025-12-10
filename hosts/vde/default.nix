@@ -9,6 +9,7 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
+    ./secrets
 
     ../../users/sid
 
@@ -16,6 +17,7 @@
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
+    outputs.nixosModules.tailscale
   ];
 
   networking.hostName = "vde";
