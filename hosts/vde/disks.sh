@@ -2,6 +2,7 @@
 
 SSD='/dev/disk/by-id/wwn-0x500a0751e280a38c'
 MNT='/mnt'
+SWAP_GB=16
 
 # Helper function to wait for devices
 wait_for_device() {
@@ -13,30 +14,51 @@ wait_for_device() {
   echo "Device $device is ready."
 }
 
-if ! command -v sgdisk &> /dev/null; then
-  nix-env -iA nixos.gptfdisk
-fi
+# Function to install a package if it's not already installed
+install_if_missing() {
+  local cmd="$1"
+  local package="$2"
+  if ! command -v "$cmd" &> /dev/null; then
+    echo "$cmd not found, installing $package..."
+    nix-env -iA "nixos.$package"
+  fi
+}
 
-swapoff --all
-udevadm settle
+install_if_missing "sgdisk" "gptfdisk"
+install_if_missing "partprobe" "parted"
 
 wait_for_device $SSD
 
+echo "Wiping filesystem on $SSD..."
+wipefs -a $SSD
+
+echo "Clearing partition table on $SSD..."
+sgdisk --zap-all $SSD
+
 echo "Partitioning $SSD..."
-sgdisk -n5:0:0 -t5:8304 -c5:ROOT $SSD
+sgdisk -n1:1M:+1G         -t1:EF00 -c1:BOOT $SSD
+sgdisk -n2:0:+"$SWAP_GB"G -t2:8200 -c2:SWAP $SSD
+sgdisk -n3:0:0            -t3:8304 -c3:ROOT $SSD
 partprobe -s $SSD
 udevadm settle
 
-wait_for_device ${SSD}-part1 # Windows ESP
-wait_for_device ${SSD}-part5
+wait_for_device ${SSD}-part1
+wait_for_device ${SSD}-part2
+wait_for_device ${SSD}-part3
 
 echo "Formatting partitions..."
-mkfs.ext4 -L ROOT "${SSD}-part5"
+mkfs.vfat -F 32 -n BOOT "${SSD}-part1"
+mkswap -L SWAP "${SSD}-part2"
+mkfs.ext4 -L ROOT "${SSD}-part3"
 
 echo "Mounting partitions..."
-mount -o X-mount.mkdir "${SSD}-part5" "$MNT"
+mount -o X-mount.mkdir "${SSD}-part3" "$MNT"
 mkdir -p "$MNT/boot"
-mount "${SSD}-part1" "$MNT/boot"
+mount -t vfat -o fmask=0077,dmask=0077,iocharset=iso8859-1 "${SSD}-part1" "$MNT/boot"
+
+echo "Enabling swap..."
+swapon "${SSD}-part2"
 
 echo "Partitioning and setup complete:"
 lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+

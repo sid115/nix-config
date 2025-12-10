@@ -7,30 +7,19 @@
 {
   imports = [
     ./boot.nix
-    ./gnome.nix
     ./hardware.nix
-    ./osx-kvm.nix
     ./packages.nix
 
     ../../users/sid
 
-    inputs.core.nixosModules.audio
     inputs.core.nixosModules.common
     inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
-    outputs.nixosModules.docs
   ];
 
   networking.hostName = "vde";
-  networking.domain = "vde.fritz.box";
+  networking.domain = "vde.lan";
 
-  services = {
-    openssh.enable = true;
-    pipewire.enable = true;
-  };
-
-  time.hardwareClockInLocalTime = true; # Windows compatibility
-
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 }

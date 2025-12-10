@@ -2,6 +2,7 @@
   "buildHost": "localhost",
   "hosts": [
     "sid",
-    "rx4"
+    "rx4",
+    "vde"
   ]
 }
