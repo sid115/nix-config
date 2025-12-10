@@ -21,6 +21,12 @@
       port = 2299;
       user = "sid";
     };
+    vde = {
+      host = "v vde vde.lan";
+      hostname = "192.168.1.144";
+      port = 2299;
+      user = "sid";
+    };
   };
 
   # setup: sudo mkdir -p /mnt/sshfs && sudo chown sid:sid /mnt/sshfs
