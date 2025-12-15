@@ -2,6 +2,12 @@
 
 {
   programs.ssh.matchBlocks = {
+    edge = {
+      host = "e edge";
+      hostname = "49.12.227.10";
+      port = 2299;
+      user = "sid";
+    };
     uvm = {
       host = "u uvm";
       hostname = "localhost";
