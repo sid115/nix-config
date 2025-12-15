@@ -14,9 +14,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-    nixos-mailserver.inputs.nixpkgs.follows = "nixpkgs";
-
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -48,9 +45,6 @@
 
     multios-usb.url = "github:Mexit/MultiOS-USB";
     multios-usb.inputs.nixpkgs.follows = "nixpkgs";
-
-    headplane.url = "github:tale/headplane";
-    headplane.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -70,20 +64,6 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
-      apps = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          deploy = {
-            type = "app";
-            program = pkgs.lib.getExe (pkgs.callPackage ./apps/deploy { });
-            meta.description = "Deploy NixOS configurations in this flake.";
-          };
-        }
-      );
-
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
       overlays = import ./overlays { inherit inputs; };
@@ -116,33 +96,12 @@
           };
           modules = [ ./hosts/nuc8 ];
         };
-        sid = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./hosts/sid ];
-        };
         rv2 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
           };
           modules = [ ./hosts/rv2 ];
-        };
-        rx4 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./hosts/rx4 ];
-        };
-        vde = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./hosts/vde ];
         };
       };
 
