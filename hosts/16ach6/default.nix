@@ -23,6 +23,7 @@
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.windows-oci
 
+    outputs.nixosModules.appimage
     outputs.nixosModules.common
     # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
