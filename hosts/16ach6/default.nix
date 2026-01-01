@@ -67,5 +67,9 @@
     };
   };
 
+  programs.steam.enable = true;
+
+  boot.enableContainers = true;
+
   system.stateVersion = "24.11";
 }

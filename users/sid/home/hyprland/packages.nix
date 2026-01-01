@@ -36,22 +36,18 @@
       duden
       ftx-prog
       gf
-      gptfdisk
       gtkterm
       localsend
       magic-wormhole
       naabu
       ocrmypdf
-      p7zip
-      rclone
+      rpi-imager
       rustfmt
       showmethekey
       songrec
       speedtest-cli
       subfinder
       synadm
-      tmux
-      xxd
       yt-dlp
 
       inputs.multios-usb.packages.${pkgs.system}.default

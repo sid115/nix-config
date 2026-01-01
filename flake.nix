@@ -62,6 +62,21 @@
       ];
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+      overlays = [ inputs.core.overlays.default ];
+
+      mkNixosConfiguration =
+        system: modules:
+        nixpkgs.lib.nixosSystem {
+          inherit system modules;
+          specialArgs = {
+            inherit inputs outputs;
+            lib =
+              (import nixpkgs {
+                inherit system overlays;
+              }).lib;
+          };
+        };
     in
     {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
@@ -82,27 +97,9 @@
       );
 
       nixosConfigurations = {
-        "16ach6" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./hosts/16ach6 ];
-        };
-        nuc8 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./hosts/nuc8 ];
-        };
-        rv2 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./hosts/rv2 ];
-        };
+        "16ach6" = mkNixosConfiguration "x86_64-linux" [ ./hosts/16ach6 ];
+        nuc8 = mkNixosConfiguration "x86_64-linux" [ ./hosts/nuc8 ];
+        rv2 = mkNixosConfiguration "x86_64-linux" [ ./hosts/rv2 ];
       };
 
       homeConfigurations = {
