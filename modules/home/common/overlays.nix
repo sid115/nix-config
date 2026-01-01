@@ -7,6 +7,6 @@
     outputs.overlays.modifications
     outputs.overlays.old-old-stable-packages
     outputs.overlays.old-stable-packages
-    outputs.overlays.stable-packages
+    outputs.overlays.unstable-packages
   ];
 }
