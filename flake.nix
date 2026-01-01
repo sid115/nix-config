@@ -14,7 +14,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "github:nix-community/nixvim/nixos-25.11"; # HOTFIX: treesitter is broken
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";

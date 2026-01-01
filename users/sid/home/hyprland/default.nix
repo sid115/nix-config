@@ -11,7 +11,7 @@
     ./bitwarden.nix
     ./flatpak.nix
     ./fzf-open.nix
-    ./gemini-cli.nix
+    # ./gemini-cli.nix # FIXME
     ./gpg.nix
     ./hyprland.nix
     ./librewolf.nix

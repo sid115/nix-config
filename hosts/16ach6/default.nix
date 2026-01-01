@@ -38,7 +38,7 @@
     i2pd.enable = true;
     openssh.enable = true;
     windows-oci = {
-      enable = true;
+      # enable = true; # FIXME
       sharedVolume = "/home/sid/pub";
     };
   };
