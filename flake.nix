@@ -8,9 +8,16 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    core.url = "github:sid115/nix-core/release-25.11";
+    core = {
+      type = "gitlab";
+      owner = "sid";
+      repo = "nix-core";
+      host = "git.portuus.de";
+      ref = "release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # core.url = "git+https://git.portuus.de/sid/nix-core/release-25.11";
     # core.url = "git+file:///home/sid/src/nix-core";
-    core.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
