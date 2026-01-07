@@ -36,6 +36,7 @@
       duden
       ftx-prog
       gf
+      glab
       gtkterm
       localsend
       magic-wormhole

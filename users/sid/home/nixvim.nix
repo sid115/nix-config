@@ -26,7 +26,7 @@
       #   };
       # };
       render-markdown = {
-        enable = true;
+        # enable = true;
         settings = {
           # file_types = [
           #   "Avante"
