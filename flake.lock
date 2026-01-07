@@ -121,11 +121,11 @@
       },
       "locked": {
         "host": "git.portuus.de",
-        "lastModified": 1767697640,
-        "narHash": "sha256-AytPVxqJutF6r8qxjYeVFAYugXGvLtECkDrsI4a3wZQ=",
+        "lastModified": 1767813955,
+        "narHash": "sha256-RwGGX3spnkowmpUEwM9q7vc5RoIhnQFGYbM9C5UJOmk=",
         "owner": "sid",
         "repo": "nix-core",
-        "rev": "426d304f1b170d029fef553851219d36f4956139",
+        "rev": "9cafa0760ec486e7fc18a2366e8307a134e3ea27",
         "type": "gitlab"
       },
       "original": {
