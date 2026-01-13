@@ -4,15 +4,16 @@
   documentation = {
     dev.enable = true;
     man = {
-      man-db.enable = false;
-      mandoc.enable = true;
+      man-db.enable = true;
+      mandoc.enable = false;
+      generateCaches = true;
     };
   };
 
-  environment.systemPackages = [
-    pkgs.core.cppman
-    pkgs.core.pyman
-    pkgs.man-pages
-    pkgs.man-pages-posix
+  environment.systemPackages = with pkgs; [
+    core.cppman
+    core.pyman
+    man-pages
+    man-pages-posix
   ];
 }

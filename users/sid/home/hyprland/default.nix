@@ -8,10 +8,8 @@
 {
   imports = [
     # ./anyrun.nix
-    ./bitwarden.nix
     ./flatpak.nix
     ./fzf-open.nix
-    # ./gemini-cli.nix # FIXME
     ./gpg.nix
     ./hyprland.nix
     ./librewolf.nix
@@ -33,9 +31,6 @@
 
     inputs.core.homeModules.virtualisation
   ];
-
-  # FIXME: Chromium crashes the system on startup. Use Firefox for now.
-  home.packages = [ pkgs.firefox ];
 
   dbus.packages = [
     pkgs.gnome-keyring
