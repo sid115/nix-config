@@ -28,6 +28,7 @@
     outputs.nixosModules.common
     # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
+    outputs.nixosModules.syncthing
     outputs.nixosModules.tailscale
     outputs.nixosModules.wine
   ];
