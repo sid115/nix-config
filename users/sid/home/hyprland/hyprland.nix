@@ -27,7 +27,7 @@
           "$mod CTRL,  m, exec, ${flatpakRun} org.mypaint.MyPaint"
           "$mod CTRL,  o, exec, obs"
           "$mod CTRL,  p, exec, otp"
-          "$mod SHIFT, a, exec, chromium --app=https://ai.sid.ovh"
+          "$mod SHIFT, a, exec, chromium --app=https://ai.portuus.de"
         ];
       windowrule = [
         "workspace 4, title:^newsboat$"

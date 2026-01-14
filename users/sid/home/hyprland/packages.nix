@@ -1,5 +1,8 @@
 { inputs, pkgs, ... }:
 
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+in
 {
   home.packages =
     with pkgs;
@@ -22,7 +25,7 @@
       xournalpp
       zotero
 
-      # inputs.gen-dmc.packages.${pkgs.system}.gen-dmc
+      # inputs.gen-dmc.packages."${system}".gen-dmc
 
       # angryipscanner # FIXME
       # autopsy # gradle-7.6.6 is marked as insecure
@@ -36,6 +39,7 @@
       duden
       ftx-prog
       gf
+      glab
       gtkterm
       localsend
       magic-wormhole
@@ -50,7 +54,7 @@
       synadm
       yt-dlp
 
-      inputs.multios-usb.packages.${pkgs.system}.default
+      inputs.multios-usb.packages."${system}".default
 
       (instaloader.overridePythonAttrs (oldAttrs: {
         propagatedBuildInputs = (oldAttrs.propagatedBuildInputs or [ ]) ++ [

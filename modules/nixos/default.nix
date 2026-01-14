@@ -5,6 +5,7 @@
   docker = import ./docker;
   docs = import ./docs;
   monero = import ./monero;
+  syncthing = import ./syncthing;
   tailscale = import ./tailscale;
   wine = import ./wine;
 }

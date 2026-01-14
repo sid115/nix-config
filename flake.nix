@@ -1,20 +1,27 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    core.url = "github:sid115/nix-core/develop";
+    core = {
+      type = "gitlab";
+      owner = "sid";
+      repo = "nix-core";
+      host = "git.portuus.de";
+      ref = "release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # core.url = "git+https://git.portuus.de/sid/nix-core/release-25.11";
     # core.url = "git+file:///home/sid/src/nix-core";
-    core.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixvim.url = "github:nix-community/nixvim/nixos-25.11"; # HOTFIX: treesitter is broken
+    nixvim.url = "github:nix-community/nixvim/nixos-25.11";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
@@ -23,7 +30,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    stylix.url = "github:nix-community/stylix";
+    stylix.url = "github:nix-community/stylix/release-25.11";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
