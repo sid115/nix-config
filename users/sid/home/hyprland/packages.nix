@@ -8,12 +8,10 @@ in
     with pkgs;
     [
       audacity
-      discord
       drawio
       gimp
       inkscape
-      jitsi-meet-electron
-      ladybird
+      kicad
       mermaid-cli
       octaveFull
       pdfarranger
@@ -21,7 +19,6 @@ in
       spotify
       teams-for-linux
       texliveFull
-      weechat
       xournalpp
       zotero
 
@@ -30,7 +27,6 @@ in
       # angryipscanner # FIXME
       # autopsy # gradle-7.6.6 is marked as insecure
       # jellyfin-media-player # qtwebengine-5.15.19 is marked as insecure
-      # kicad # FIXME
     ]
     # tools
     ++ [
