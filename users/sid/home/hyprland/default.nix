@@ -31,11 +31,4 @@
 
     inputs.core.homeModules.virtualisation
   ];
-
-  dbus.packages = [
-    pkgs.gnome-keyring
-  ];
-  home.sessionVariables = {
-    GNOME_KEYRING_CONTROL = "/run/user/1000/keyring/control";
-  };
 }
