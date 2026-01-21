@@ -12,8 +12,9 @@
     "rclone/sciebo/user" = { };
     gemini-api-key = { };
     github-token = { };
-    nextcloud = { };
-    spotify = { };
     miniflux = { };
+    nextcloud = { };
+    openrouter-api-key = { };
+    spotify = { };
   };
 }
