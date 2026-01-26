@@ -100,6 +100,17 @@
         in
         {
           default = import ./shell.nix { inherit pkgs; };
+          kicad = pkgs.mkShell {
+            buildInputs = [
+              (pkgs.python313.withPackages (
+                p: with p; [
+                  kicad
+                  requests
+                  wxpython
+                ]
+              ))
+            ];
+          };
         }
       );
 
