@@ -26,6 +26,8 @@
 
   networking.hostName = "rv2";
 
+  programs.steam.enable = true;
+
   programs.adb.enable = true;
   users.users.sid.extraGroups = [
     "adbusers"
