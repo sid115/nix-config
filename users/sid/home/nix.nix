@@ -1,8 +1,7 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   # Nix access tokens
-  nix.package = pkgs.nix;
   nix.extraOptions = ''
     !include ${config.sops.templates.access-tokens.path}
   '';

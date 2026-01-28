@@ -8,8 +8,9 @@
 
     ../../users/sid
 
+    inputs.core.nixosModules.bluetooth
     inputs.core.nixosModules.common
-    inputs.core.nixosModules.device.laptop # for Bluetooth
+    inputs.core.nixosModules.device.desktop
     inputs.core.nixosModules.hyprland
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.virtualisation

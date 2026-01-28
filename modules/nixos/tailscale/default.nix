@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 
 {
   imports = [ inputs.core.nixosModules.tailscale ];
@@ -8,8 +8,4 @@
     enableSSH = true;
     loginServer = "https://hs.sid.ovh";
   };
-
-  environment.systemPackages = with pkgs; [
-    kitty # to be able to copy term info
-  ];
 }

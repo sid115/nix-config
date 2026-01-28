@@ -70,18 +70,14 @@
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      overlays = [ inputs.core.overlays.default ];
+      lib = nixpkgs.lib.extend (final: prev: inputs.core.lib or { });
 
       mkNixosConfiguration =
         system: modules:
         nixpkgs.lib.nixosSystem {
           inherit system modules;
           specialArgs = {
-            inherit inputs outputs;
-            lib =
-              (import nixpkgs {
-                inherit system overlays;
-              }).lib;
+            inherit inputs outputs lib;
           };
         };
     in
