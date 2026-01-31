@@ -15,9 +15,9 @@
       host = "git.portuus.de";
       ref = "release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
+      # url = "git+https://git.portuus.de/sid/nix-core/release-25.11";
+      # url = "git+file:///home/sid/src/nix-core";
     };
-    # core.url = "git+https://git.portuus.de/sid/nix-core/release-25.11";
-    # core.url = "git+file:///home/sid/src/nix-core";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -33,7 +33,7 @@
     stylix.url = "github:nix-community/stylix/release-25.11";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     anyrun.url = "github:anyrun-org/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
