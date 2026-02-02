@@ -14,7 +14,7 @@
     ./hyprland.nix
     ./librewolf.nix
     ./newsboat.nix
-    ./nextcloud-sync.nix
+    # ./nextcloud-sync.nix
     ./obs-studio.nix
     ./opencode.nix
     ./packages.nix

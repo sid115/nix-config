@@ -17,6 +17,7 @@ in
       pdfarranger
       remmina
       spotify
+      syncthingtray
       teams-for-linux
       texliveFull
       xournalpp

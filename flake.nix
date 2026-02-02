@@ -149,6 +149,19 @@
         };
       };
 
+      formatter = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          config = self.checks.${system}.pre-commit-check.config;
+          inherit (config) package configFile;
+          script = ''
+            ${pkgs.lib.getExe package} run --all-files --config ${configFile}
+          '';
+        in
+        pkgs.writeShellScriptBin "pre-commit-run" script
+      );
+
       checks = forAllSystems (
         system:
         let
@@ -159,7 +172,7 @@
           pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
             src = ./.;
             hooks = {
-              nixfmt-rfc-style.enable = true;
+              nixfmt.enable = true;
             };
           };
           build-packages = pkgs.linkFarm "flake-packages-${system}" flakePkgs;
