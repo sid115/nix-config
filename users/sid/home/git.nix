@@ -3,7 +3,7 @@
     enable = true;
     settings.user = {
       name = "sid";
-      email = "sid@portuus.de";
+      email = "sid@sid.ovh";
     };
   };
 }
