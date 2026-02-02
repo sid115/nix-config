@@ -16,11 +16,11 @@ let
 
   allDevices = {
     "16ach6" = {
-      id = "JG6BYOJ-AW67R72-VA25U6I-VIZ57HU-3KXMPGY-HTYT2FQ-ZZL6U7B-Z2RWDQ4";
+      id = "5IPAQ5C-V3KFUMD-NJM74SH-6MD246O-JGYCBN4-F77QG6W-W3WNSCA-NQY37AY";
       addresses = [ "tcp://100.64.0.2:${toString transferPort}" ];
     };
     rv2 = {
-      id = "5IPAQ5C-V3KFUMD-NJM74SH-6MD246O-JGYCBN4-F77QG6W-W3WNSCA-NQY37AY";
+      id = "JG6BYOJ-AW67R72-VA25U6I-VIZ57HU-3KXMPGY-HTYT2FQ-ZZL6U7B-Z2RWDQ4";
       addresses = [ "tcp://100.64.0.11:${toString transferPort}" ];
     };
     rx4 = {

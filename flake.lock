@@ -194,20 +194,18 @@
         "stylix": "stylix"
       },
       "locked": {
-        "host": "git.portuus.de",
-        "lastModified": 1769628088,
-        "narHash": "sha256-13VwjpXwGE37DBLCEJzEMPK6MhdkygtIRJ7pauWKjco=",
-        "owner": "sid",
-        "repo": "nix-core",
-        "rev": "c61d06655e8a406e22bd516460ad5d727c7a69f6",
-        "type": "gitlab"
+        "lastModified": 1770025789,
+        "narHash": "sha256-yDWDVxzHADqdOYuxWb/ELTLCKXYSq70xsrqnb9rxJhc=",
+        "ref": "release-25.11",
+        "rev": "59e45421d0f1f0610f67aa4f5fd7dbb575a795ec",
+        "revCount": 74,
+        "type": "git",
+        "url": "https://git.portuus.de/sid/nix-core.git"
       },
       "original": {
-        "host": "git.portuus.de",
-        "owner": "sid",
         "ref": "release-25.11",
-        "repo": "nix-core",
-        "type": "gitlab"
+        "type": "git",
+        "url": "https://git.portuus.de/sid/nix-core.git"
       }
     },
     "firefox-gnome-theme": {
