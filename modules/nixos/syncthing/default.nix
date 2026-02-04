@@ -24,7 +24,7 @@ let
       addresses = [ "tcp://100.64.0.11:${toString transferPort}" ];
     };
     rx4 = {
-      id = "SNZKKTO-HOTZM4Y-A63STRI-EHGQ6VI-3VTVINH-EYW5E3G-XEVJNBP-3XLE6AX";
+      id = "GBTCUX6-MAXC7NL-IGCJWWE-OEMANRO-BWZGWFU-HHO3NGN-GIUCXJJ-MTWM6QP";
       addresses = [ "tcp://100.64.0.10:${toString transferPort}" ];
     };
   };
