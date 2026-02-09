@@ -15,6 +15,12 @@
       port = 22;
       user = "sid";
     };
+    vde = {
+      host = "v vde";
+      hostname = "192.168.1.224";
+      port = 2299;
+      user = "sid";
+    };
   };
 
   programs.sftpman.mounts = {
