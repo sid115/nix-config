@@ -106,6 +106,7 @@
       nixosConfigurations = {
         "16ach6" = mkNixosConfiguration "x86_64-linux" [ ./hosts/16ach6 ];
         nuc8 = mkNixosConfiguration "x86_64-linux" [ ./hosts/nuc8 ];
+        pc = mkNixosConfiguration "x86_64-linux" [ ./hosts/pc ];
         rv2 = mkNixosConfiguration "x86_64-linux" [ ./hosts/rv2 ];
       };
 
