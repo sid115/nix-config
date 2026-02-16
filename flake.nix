@@ -130,6 +130,16 @@
             ./users/sid/home/hosts/nuc8
           ];
         };
+        "sid@pc" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./users/sid/home
+            ./users/sid/home/hosts/pc
+          ];
+        };
         "sid@rv2" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
