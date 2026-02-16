@@ -9,7 +9,7 @@
     ./boot.nix
     ./hardware.nix
     ./packages.nix
-    # ./secrets
+    ./secrets
 
     ../../users/sid
 
