@@ -7,6 +7,7 @@ in
   home.packages =
     with pkgs;
     [
+      prismlauncher
       audacity
       drawio
       gimp
