@@ -36,6 +36,7 @@
   networking.hostName = "16ach6";
 
   services = {
+    envfs.enable = true;
     i2pd.enable = true;
     openssh.enable = true;
     windows-oci = {
