@@ -15,9 +15,9 @@
     "nvme"
     "xhci_pci"
     "ahci"
+    "usbhid"
     "usb_storage"
     "sd_mod"
-    "sdhci_pci"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
@@ -45,4 +45,6 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.graphics.enable = true;
+  hardware.nvidia.open = false;
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 }
