@@ -8,6 +8,7 @@
   imports = [
     ./boot.nix
     ./hardware.nix
+    ./networking.nix
     ./packages.nix
     ./secrets
 
@@ -25,8 +26,6 @@
     outputs.nixosModules.tailscale
     outputs.nixosModules.wine
   ];
-
-  networking.hostName = "pc";
 
   services = {
     openssh.enable = true;
