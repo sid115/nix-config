@@ -11,7 +11,6 @@
     "rclone/sciebo/url" = { };
     "rclone/sciebo/user" = { };
     gemini-api-key = { };
-    github-token = { };
     miniflux = { };
     nextcloud = { };
     openrouter-api-key = { };
