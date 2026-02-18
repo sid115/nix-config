@@ -22,7 +22,7 @@
     outputs.nixosModules.common
     outputs.nixosModules.docs
     # outputs.nixosModules.syncthing
-    # outputs.nixosModules.tailscale
+    outputs.nixosModules.tailscale
     outputs.nixosModules.wine
   ];
 
