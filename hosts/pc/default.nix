@@ -11,6 +11,7 @@
     ./networking.nix
     ./packages.nix
     ./secrets
+    ./services.nix
 
     ../../users/sid
 
@@ -18,7 +19,6 @@
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.desktop
     inputs.core.nixosModules.hyprland
-    inputs.core.nixosModules.openssh
 
     outputs.nixosModules.common
     outputs.nixosModules.docs
@@ -26,10 +26,6 @@
     outputs.nixosModules.tailscale
     outputs.nixosModules.wine
   ];
-
-  services = {
-    openssh.enable = true;
-  };
 
   normalUsers = {
     sid = {
