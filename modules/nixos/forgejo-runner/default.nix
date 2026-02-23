@@ -55,8 +55,6 @@ in
           nix
           nodejs
           openssh
-          sudo
-          tailscale
         ];
 
         settings = {
