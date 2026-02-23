@@ -6,6 +6,7 @@
     ./hardware.nix
     ./packages.nix
     ./secrets
+    ./services.nix
 
     ../../users/sid
 
@@ -13,9 +14,7 @@
     inputs.core.nixosModules.common
     inputs.core.nixosModules.device.desktop
     inputs.core.nixosModules.hyprland
-    inputs.core.nixosModules.openssh
     inputs.core.nixosModules.virtualisation
-    inputs.core.nixosModules.windows-oci
 
     outputs.nixosModules.appimage
     outputs.nixosModules.common
@@ -36,29 +35,6 @@
     "kvm"
   ];
 
-  services = {
-    # FIXME:
-    # connect in weechat:
-    # /server add local localhost/6667
-    # /set irc.server.local.password "abc"
-    # /set irc.server.local.tls off
-    # Access denied: Bad password?
-    ngircd = {
-      enable = true;
-      config = ''
-        [Global]
-        Name = irc.local
-        Info = Minimal ngIRCd Server
-        Password = yourmom69
-      '';
-    };
-    openssh.enable = true;
-    windows-oci = {
-      # enable = true;
-      sharedVolume = "/home/sid/pub";
-    };
-  };
-
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
   ];
@@ -77,8 +53,6 @@
       ];
     };
   };
-
-  time.hardwareClockInLocalTime = true; # Windows compatibility
 
   system.stateVersion = "25.05";
 }

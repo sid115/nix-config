@@ -49,12 +49,14 @@ in
           bash
           coreutils
           curl
+          deploy-rs
           gitMinimal
           gnused
           nix
           nodejs
           openssh
-          deploy-rs
+          sudo
+          tailscale
         ];
 
         settings = {
