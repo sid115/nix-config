@@ -23,7 +23,7 @@ sudo chown $USER:$USER /tmp/gpg-backup.sec.asc
 sudo chown $USER:$USER /tmp/keys.txt
 
 # Import secrets
-mkdir -p ~/.config/sops/age && mv /tmp/keys.txt ~/.config/sops/age
+mkdir -p ~/.config/sops/age && mv /tmp/keys.txt ~/.config/sops/age && chmod 0400 ~/.config/sops/age/keys.txt
 gpg --decrypt /tmp/gpg-backup.sec.asc | gpg --import
 gpg --edit-key D371C8E7D58F9D1E # replace with your key ID
 gpg> trust

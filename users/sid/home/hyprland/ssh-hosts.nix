@@ -4,7 +4,7 @@
   programs.ssh.matchBlocks = {
     edge = {
       host = "e edge";
-      hostname = "synapse-test.ovh";
+      hostname = "49.12.227.10";
       port = 2299;
       user = "sid";
     };
@@ -24,12 +24,6 @@
     sid = {
       host = "s sid *.sid.ovh";
       hostname = "sid.ovh";
-      port = 2299;
-      user = "sid";
-    };
-    vde = {
-      host = "v vde vde.lan";
-      hostname = "192.168.1.144";
       port = 2299;
       user = "sid";
     };

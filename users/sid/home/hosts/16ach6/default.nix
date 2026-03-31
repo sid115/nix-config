@@ -18,6 +18,12 @@
       port = 22;
       user = "sid";
     };
+    pc = {
+      host = "pc";
+      hostname = "192.168.178.140";
+      port = 2299;
+      user = "sid";
+    };
   };
 
   programs.sftpman.mounts = {

@@ -1,20 +1,20 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-old-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-old-old-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    core.url = "github:sid115/nix-core/develop";
+    core.url = "git+https://git.portuus.de/sid/nix-core.git?ref=release-25.11";
     # core.url = "git+file:///home/sid/src/nix-core";
     core.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixvim.url = "github:nix-community/nixvim/nixos-25.11"; # HOTFIX: treesitter is broken
+    nixvim.url = "github:nix-community/nixvim/nixos-25.11";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
@@ -23,10 +23,10 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    stylix.url = "github:nix-community/stylix";
+    stylix.url = "github:nix-community/stylix/release-25.11";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     anyrun.url = "github:anyrun-org/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
@@ -63,18 +63,14 @@
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      overlays = [ inputs.core.overlays.default ];
+      lib = nixpkgs.lib.extend (final: prev: inputs.core.lib or { });
 
       mkNixosConfiguration =
         system: modules:
         nixpkgs.lib.nixosSystem {
           inherit system modules;
           specialArgs = {
-            inherit inputs outputs;
-            lib =
-              (import nixpkgs {
-                inherit system overlays;
-              }).lib;
+            inherit inputs outputs lib;
           };
         };
     in
@@ -93,12 +89,24 @@
         in
         {
           default = import ./shell.nix { inherit pkgs; };
+          kicad = pkgs.mkShell {
+            buildInputs = [
+              (pkgs.python313.withPackages (
+                p: with p; [
+                  kicad
+                  requests
+                  wxpython
+                ]
+              ))
+            ];
+          };
         }
       );
 
       nixosConfigurations = {
         "16ach6" = mkNixosConfiguration "x86_64-linux" [ ./hosts/16ach6 ];
         nuc8 = mkNixosConfiguration "x86_64-linux" [ ./hosts/nuc8 ];
+        pc = mkNixosConfiguration "x86_64-linux" [ ./hosts/pc ];
         rv2 = mkNixosConfiguration "x86_64-linux" [ ./hosts/rv2 ];
       };
 
@@ -123,6 +131,16 @@
             ./users/sid/home/hosts/nuc8
           ];
         };
+        "sid@pc" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./users/sid/home
+            ./users/sid/home/hosts/pc
+          ];
+        };
         "sid@rv2" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
@@ -135,6 +153,19 @@
         };
       };
 
+      formatter = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          config = self.checks.${system}.pre-commit-check.config;
+          inherit (config) package configFile;
+          script = ''
+            ${pkgs.lib.getExe package} run --all-files --config ${configFile}
+          '';
+        in
+        pkgs.writeShellScriptBin "pre-commit-run" script
+      );
+
       checks = forAllSystems (
         system:
         let
@@ -145,7 +176,7 @@
           pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
             src = ./.;
             hooks = {
-              nixfmt-rfc-style.enable = true;
+              nixfmt.enable = true;
             };
           };
           build-packages = pkgs.linkFarm "flake-packages-${system}" flakePkgs;

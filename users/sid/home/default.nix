@@ -8,7 +8,6 @@
   imports = [
     ./git.nix
     ./home.nix
-    ./nix.nix
     ./nixvim.nix
     ./secrets
 

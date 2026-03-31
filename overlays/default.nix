@@ -19,9 +19,9 @@
     in
     builtins.foldl' (a: b: a // b) { } imports // inputs.core.overlays.modifications final prev;
 
-  # stable nixpkgs accessible through 'pkgs.stable'
-  stable-packages = final: prev: {
-    stable = import inputs.nixpkgs-stable {
+  # unstable nixpkgs accessible through 'pkgs.unstable'
+  unstable-packages = final: prev: {
+    unstable = import inputs.nixpkgs-unstable {
       inherit (final) system;
       inherit (prev) config;
     };

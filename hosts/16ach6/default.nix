@@ -23,11 +23,12 @@
     inputs.core.nixosModules.openssh
     inputs.core.nixosModules.windows-oci
 
-    outputs.nixosModules.anything-llm-oci
+    # outputs.nixosModules.anything-llm-oci
     outputs.nixosModules.appimage
     outputs.nixosModules.common
     # outputs.nixosModules.docker # conflicts with `virtualisation.podman.dockerCompat`
     outputs.nixosModules.docs
+    outputs.nixosModules.syncthing
     outputs.nixosModules.tailscale
     outputs.nixosModules.wine
   ];
@@ -35,6 +36,7 @@
   networking.hostName = "16ach6";
 
   services = {
+    envfs.enable = true;
     i2pd.enable = true;
     openssh.enable = true;
     windows-oci = {

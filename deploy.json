@@ -1,8 +1,0 @@
-{
-  "buildHost": "localhost",
-  "hosts": [
-    "sid",
-    "rx4",
-    "vde"
-  ]
-}

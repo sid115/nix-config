@@ -21,6 +21,8 @@ let
     "src"
     "vid"
   ];
+
+  inherit (pkgs.stdenv.hostPlatform) system;
 in
 {
   imports = [
@@ -29,7 +31,7 @@ in
 
   programs.anyrun = {
     enable = true;
-    package = inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins;
+    package = inputs.anyrun.packages."${system}".anyrun-with-all-plugins;
     config = {
       x = {
         fraction = 0.5;
@@ -44,7 +46,7 @@ in
       layer = "overlay";
       hidePluginInfo = true;
       showResultsImmediately = true;
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
+      plugins = with inputs.anyrun.packages."${system}"; [
         applications
         dictionary
         kidex
